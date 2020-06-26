@@ -8,7 +8,8 @@ import {
 } from 'react-native';
 import Guess from "../../../components/guess/components/Guess";
 import User from "../../../components/user/components/User";
-import ProductContainer from "../../../components/productContainer/components/ProductContainer";
+//import ProductContainer from "../../../components/productContainer/components/ProductContainer";
+import ProductContainer from "../../../stores/containers/ProductContainer";
 import { Ionicons } from '@expo/vector-icons';
 import {stylesContent} from "../style";
 

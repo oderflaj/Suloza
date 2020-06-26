@@ -10,7 +10,7 @@ import MenuButton from '../../scenes/productNavigator/components/MenuButton';
 const mapStateToProps = (state) => {   
     
   return{
-    turnOnOff: state.reducerProductNavigator.turnOnOff,
+    category: state.reducerProductNavigator.category,
   } 
 };
 
