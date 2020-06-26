@@ -13,6 +13,7 @@ export default StyleSheet.create({
     borderRadius: 50,
     borderColor: '#7C746E',
     borderWidth: 2,
+    backgroundColor:'transparent',
     height: 60,
     width: 60,
   },

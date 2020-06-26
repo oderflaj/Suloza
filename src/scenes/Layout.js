@@ -1,5 +1,6 @@
 import React,{useState,useEffect} from 'react';
 import {View, Text,StyleSheet, StatusBar,Image,Modal,NativeModules, StatusBarIOS, Platform} from "react-native";
+import {styles} from "./../styles";
 import ShoppingCartButton from "./shoppingCart/components/ShoppingCartButton";
 import MenuContent from "../stores/containers/MenuContent";
 import MenuButton from "../stores/containers/MenuButton"; 
@@ -50,43 +51,3 @@ export default () => {
       )
 }
 
-const styles = StyleSheet.create({
-  statusBar:{
-    backgroundColor:"grey",
-    
-  },
-  layoutContent:{
-    position:"relative",
-    backgroundColor:"#fff",
-    height:"100%"
-
-  },
-  headerContent:{
-    backgroundColor:"#fff",
-    height:100,
-    flexDirection:"row",
-    justifyContent:"space-around",
-  },
-  headerLeft:{
-    justifyContent:"space-around",
-    
-  },
-  headerCenter:{
-    justifyContent:"space-around",
-    width:"50%",
-    
-  },
-  headerCenterFont:{
-    fontSize:22,
-    textAlign:"center",
-    fontWeight:"bold"
-  },
-  headerRight:{
-    justifyContent:"space-around",
-    
-  },
-  mainContent:{
-    backgroundColor:"#fff",
-    height:"100%"
-  }
-})

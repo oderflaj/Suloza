@@ -1,6 +1,6 @@
 import {TOGGLE_PRODUCT_MENU} from "./actions";
 
-const initialState = {turnOnOff:false};
+const initialState = {turnOnOff:true};
 
 
 export default function productNavigator(state=initialState, action){
