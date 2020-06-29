@@ -2,15 +2,18 @@ import { connect } from 'react-redux';
 import * as ProductNavigatorAction from '../ProductNavigator/actions';
 import { bindActionCreators } from 'redux';
 import MenuButton from '../../scenes/productNavigator/components/MenuButton';
-/*
+
+  
+  
+const mapStateToProps = (state) => {   
+  /*
   console.log("--STaTEx--")
   console.log(state.reducerProductNavigator)
-  console.log("--STaTEx--")
+  console.log("--STaTEx--")  
   */
-const mapStateToProps = (state) => {   
-    
   return{
     category: state.reducerProductNavigator.category,
+    resetCarousel:state.reducerProductNavigator.resetCarousel
   } 
 };
 

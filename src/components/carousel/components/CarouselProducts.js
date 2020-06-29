@@ -7,7 +7,7 @@ import { SimpleLineIcons } from '@expo/vector-icons';
 
 export const Carousel = (props) => {
   
-  const { items, style } = props;
+  const { items, resetCarousel, actions } = props;
   const itemsPerInterval = props.itemsPerInterval === undefined
     ? 1
     : props.itemsPerInterval;
@@ -48,8 +48,16 @@ export const Carousel = (props) => {
     }
   }
 
+  /**Definición de una referencia para poder relacionarla al ScrollView para poder manipularlo si se requiere
+   * como es este caso en donde se va a poner el scroll al inicio en caso de que se cambie de producto
+   */
+  const ref = React.useRef(null);
+
   React.useEffect(()=>{
-    //console.log(items.length)
+    if(resetCarousel){
+      ref.current.scrollTo({x: 0, y: 0, animated: true});
+      actions.toggleReseCarousel();
+    }
   })
 
   
@@ -89,14 +97,20 @@ export const Carousel = (props) => {
     )
   }
 
+  
+
   return (
     <View style={styles.container}>
       {leftArrow()}
-      <ScrollView
+      <ScrollView 
+        ref={ref}
         horizontal={true}
         contentContainerStyle={{ ...styles.scrollView, width: `${100 * intervals}%` }}
         showsHorizontalScrollIndicator={false}
-        onContentSizeChange={(w, h) => init(w)}
+        onContentSizeChange={(w, h) => {
+          init(w);
+
+          }}
         onScroll={data => {
           setWidth(data.nativeEvent.contentSize.width);
           setInterval(getInterval(data.nativeEvent.contentOffset.x));

@@ -10,6 +10,14 @@ import ImageProduct from '../../../components/imageProduct/components/ImageProdu
 
 export default ({ category, actions }) => {
 
+  const [produtSelected,setProductSelect] = React.useState("");
+    //console.log(category)
+    React.useEffect(()=>{
+        if(produtSelected!=category.category){
+            setProductSelect(category.category);
+        }
+        console.log(produtSelected)
+    })
   return (
     <View>
       <TouchableOpacity onPress={actions.toggleProductMenu}> 
