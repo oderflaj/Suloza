@@ -23,6 +23,7 @@
     ],
     "ios": {
       "supportsTablet": true
-    }
+    },
+    "description": "Calatlog application to créate configurations of products for dinner and another events tha use dishes, glasses, cups, etc"
   }
 }

@@ -1,6 +1,19 @@
 import {TOGGLE_PRODUCT_MENU, SET_PRODUCT_CATEGORY} from "./actions";
+import {imageProduct} from "../../services/Images";
 
-const initialState = {turnOnOff:true, category:{category:"copaz"}};
+const initialState = {turnOnOff:false, category:{
+        category:"cubiertos",
+        name:"Cubiertos",
+        products:[
+            {
+                id:14,
+                name:"Cubierto 1",
+                image:imageProduct.cutlery1,
+                imageToTable:imageProduct.cutlery1,
+                price:"9"
+            }
+        ]
+    }};
 
 
 export default function productNavigator(state=initialState, action){

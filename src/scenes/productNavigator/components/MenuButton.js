@@ -2,10 +2,7 @@ import * as React from 'react';
 import {
   View,
   Text,
-  Image,
-  StyleSheet,
   TouchableOpacity,
-  Modal,
 } from 'react-native';
 import {styles} from "../style";
 import ImageProduct from '../../../components/imageProduct/components/ImageProduct'; 
