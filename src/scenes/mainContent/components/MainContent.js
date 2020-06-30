@@ -1,12 +1,13 @@
 import React from "react";
 import {View,Text} from "react-native";
-//import CarouselProducts from "../../../components/carousel/components/CarouselProducts";
 import CarouselProducts from "../../../stores/containers/CarouselProducts";
+import CarouselTable from "../../../components/corouselTable/components/CarouselTable";
+import {tableCatalog} from "../../../services/Data";
 
 
 
 export default ({category})=>{
-    
+    console.log(tableCatalog)
     /*
     const [produtSelected,setProductSelect] = React.useState("");
     //console.log(category)
@@ -20,11 +21,13 @@ export default ({category})=>{
     return(
     <View>
         <CarouselProducts
-            style='element'
+            
             itemsPerInterval={3}
             items={category.products}
         />
-        <Text>Table</Text>
+        <CarouselTable
+            items={tableCatalog}
+        />
         <Text>Confirmation</Text>
     </View>
     )

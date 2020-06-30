@@ -1,4 +1,4 @@
-import {imageProduct} from "./Images"
+import {imageProduct, imageTable} from "./Images"
 
 export const nameItemMenu = {
     cup1:"Copaz",
@@ -178,5 +178,26 @@ export const productCatalog = [
                 price:"13"
             },
         ]
+    },
+]
+
+export const tableCatalog =[
+    {
+        id:1,
+        name:"table1",
+        title:"Mesa Formal",
+        image:imageTable.table1
+    },
+    {
+        id:2,
+        name:"table2",
+        title:"Mesa Casual",
+        image:imageTable.table2
+    },
+    {
+        id:3,
+        name:"table3",
+        title:"Mesa Bohemia",
+        image:imageTable.table3
     },
 ]

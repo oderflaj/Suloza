@@ -7,11 +7,15 @@ export default ()=>{
   const [guessCount,setGuessCount] = useState("0");
 
   const onChangeText = (textValue)=>{
+    if(textValue[0]==0 && textValue.length>1){
+      textValue = textValue.substring(1);
+    }
+
     if(textValue.length<1){
       setGuessCount("0")
       return
     }
-    let patt1 =/[1-9]+/g;
+    let patt1 =/[0-9]+/g;
     let result = textValue.match(patt1);
     
     setGuessCount(result[0])

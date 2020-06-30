@@ -7,6 +7,7 @@ export const imagesMenu = {
     glass1:require('../../assets/glass1.png'),
 };
 
+//Productos a mostrar para seleccionar
 export const imageProduct={
     cup1:require('../../assets/cup1.png'),
     cup2:require('../../assets/cup2.png'),
@@ -31,6 +32,7 @@ export const imageProduct={
     glass6:require('../../assets/Vaso_06.png'),
 }
 
+//Productos en forma adecuada para que se muestren en la mesa
 export const imageProductToTable={
     cup1:require('../../assets/cup1.png'),
     cup2:require('../../assets/cup2.png'),
@@ -53,4 +55,10 @@ export const imageProductToTable={
     glass4:require('../../assets/Vaso_04.png'),
     glass5:require('../../assets/Vaso_05.png'),
     glass6:require('../../assets/Vaso_06.png'),
+}
+
+export const imageTable = {
+    table1:require('../../assets/table.jpg'),
+    table2:require('../../assets/table2.png'),
+    table3:require('../../assets/Table3.png'),
 }
