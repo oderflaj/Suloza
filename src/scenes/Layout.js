@@ -2,11 +2,11 @@ import React,{useState,useEffect} from 'react';
 import {View, Text,StyleSheet, StatusBar,Image,Modal,NativeModules, StatusBarIOS, Platform} from "react-native";
 import {styles} from "./../styles";
 import ShoppingCartButton from "./shoppingCart/components/ShoppingCartButton";
-import MenuContent from "../stores/containers/MenuContent";
-import MenuButton from "../stores/containers/MenuButton"; 
+import MenuContent from "../stores/ProductNavigationContainers/MenuContent";
+import MenuButton from "../stores/ProductNavigationContainers/MenuButton"; 
 //import MainContent from "../scenes/mainContent/components/MainContent";
-import MainContent from "../stores/containers/MainContent";
-import { createStore } from 'redux'
+import MainContent from "../stores/ProductNavigationContainers/MainContent";
+import { createStore } from 'redux';
 import {Provider} from "react-redux";
 import combine from "../stores/ConfigureStore";
 

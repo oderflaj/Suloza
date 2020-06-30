@@ -7,8 +7,6 @@ import {styles} from "../style";
 
 export default ({category,actions})=>{
 
-  console.log(productCatalog[4].category);
-
   function setProductCategory(categorySelected){
     //console.log(categorySelected)
     let categoryOne=productCatalog.filter(product=>product.category===categorySelected)[0];

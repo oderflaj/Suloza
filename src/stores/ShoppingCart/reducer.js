@@ -1,6 +1,6 @@
 import {SET_GUESSES} from "./actions"
 
-const initialState = {guesses:0}
+const initialState = {guesses:"0"}
 
 export default function shoppingCart(state=initialState,action){
     switch(action.type){
