@@ -51,7 +51,7 @@ export const styles = new StyleSheet.create({
     content:{
       position:"relative",
       flexDirection:"column",
-      backgroundColor:"#fff",
+      backgroundColor:"rgb(215, 233, 233)",
       height:"100%",
       width:"85%",
       borderRightWidth:1,

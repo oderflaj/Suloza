@@ -1,7 +1,8 @@
 import React from 'react'
-import { View, ScrollView, Text } from 'react-native'
+import { View, ScrollView, Text, TouchableWithoutFeedback } from 'react-native'
 import { SlideTable } from './SlideTable';
 import { styles } from '../styles';
+import { Ionicons } from '@expo/vector-icons';
 
 export const CarouselTable = (props) => {
   //console.log(props.items)
@@ -49,33 +50,52 @@ export const CarouselTable = (props) => {
   }
 
   return (
-    <View style={styles.container}>
-      <ScrollView
-        horizontal={true}
-        contentContainerStyle={{ ...styles.scrollView, width: `${100 * intervals}%` }}
-        showsHorizontalScrollIndicator={false}
-        onContentSizeChange={(w, h) => init(w)}
-        onScroll={data => {
-          setWidth(data.nativeEvent.contentSize.width);
-          setInterval(getInterval(data.nativeEvent.contentOffset.x));
-        }}
-        scrollEventThrottle={200}
-        pagingEnabled
-        decelerationRate="fast"
-      >
-        {items.map((item, index) => {
-            return(
-                <SlideTable
-                    key={index}
-                    imagePath={item.image}
-                />
-            );
-        })}
-      </ScrollView>
-      <View style={styles.bullets}>
-        {bullets}
-      </View>
+    <View>
+        
+        <View style={styles.container}>
+            <ScrollView
+                horizontal={true}
+                contentContainerStyle={{ ...styles.scrollView, width: `${100 * intervals}%` }}
+                showsHorizontalScrollIndicator={false}
+                onContentSizeChange={(w, h) => init(w)}
+                onScroll={data => {
+                setWidth(data.nativeEvent.contentSize.width);
+                setInterval(getInterval(data.nativeEvent.contentOffset.x));
+                }}
+                scrollEventThrottle={200}
+                pagingEnabled
+                decelerationRate="fast"
+                
+            >
+                {items.map((item, index) => {
+                    return(
+                        <SlideTable
+                            key={index}
+                            imagePath={item.image}
+                        />
+                    );
+                })}
+            </ScrollView>
+            <View style={styles.bullets}>
+                {bullets}
+            </View>
+        </View>
+        <View style={styles.contentButtons}>
+            <View>
+                <TouchableWithoutFeedback onPress={()=>console.log("Aqui")}>
+                    <Ionicons name="md-arrow-dropleft" size={54} color="black" />
+                </TouchableWithoutFeedback>
+            </View>
+            <View>
+                <TouchableWithoutFeedback onPress={()=>console.log("Aqui")}>
+                    <Ionicons name="md-arrow-dropright" size={54} color="black" />
+                </TouchableWithoutFeedback>
+            </View>
+        </View>
+        
     </View>
+    
+    
   )
 }
 

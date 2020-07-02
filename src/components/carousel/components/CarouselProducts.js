@@ -76,7 +76,7 @@ export const Carousel = (props) => {
     }
     return (
       <View style={[styles.arrow]}>
-        <SimpleLineIcons name="arrow-left" size={24} color="white" />
+        <SimpleLineIcons name="arrow-left" size={24} color="rgba(146, 185, 185, 0.57)" />
       </View>
     )
   }
@@ -92,7 +92,7 @@ export const Carousel = (props) => {
     }
     return (
       <View style={[styles.arrow]}>
-        <SimpleLineIcons name="arrow-right" size={24} color="white" />
+        <SimpleLineIcons name="arrow-right" size={24} color="rgba(146, 185, 185, 0.57)" />
       </View>
     )
   }

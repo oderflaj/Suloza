@@ -1,7 +1,7 @@
 import {imageProduct, imageTable} from "./Images"
 
 export const nameItemMenu = {
-    cup1:"Copaz",
+    cup1:"Copas",
     cupCoffee1:"Tazas",
     cutlery1:"Cubiertos",
     dish1:"Platos",
@@ -58,8 +58,8 @@ export const productCatalog = [
         ]
     },
     {
-        category:"copaz",
-        name:"Copaz",
+        category:"copas",
+        name:"Copas",
         products:[
             {
                 id:7,

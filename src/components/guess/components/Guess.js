@@ -12,7 +12,7 @@ export default ({guesses,actions})=>{
   
   useEffect(()=>{
     if(guessCount==0 && initialValue){
-      console.log("Pone a fuerza")
+      
       setGuessCount(guesses);
       setInitialValue(false);
     }

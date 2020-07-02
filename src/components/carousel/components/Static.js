@@ -9,7 +9,10 @@ export const Static = (props) => {
 
   return (
     <View style={stylesStat.stat}>
-      <ImageProduct  pathImage={imagePath} backgroundColor={"rgb(197, 230, 230)"} borderWidth={0}/>
+      <ImageProduct  
+        pathImage={imagePath} 
+        backgroundColor={"rgb(197, 230, 230)"} 
+        sizeBorder={5}/>
     </View>
   );
 }

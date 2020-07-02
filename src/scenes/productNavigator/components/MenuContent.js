@@ -1,9 +1,7 @@
 import React from 'react';
 import {
   View,
-  Text,
   TouchableWithoutFeedback,
-  StyleSheet,
   Modal,
 } from 'react-native';
 //import Guess from "../../../components/guess/components/Guess";

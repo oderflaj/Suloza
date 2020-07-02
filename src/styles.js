@@ -6,7 +6,7 @@ export const styles = StyleSheet.create({
     },
     layoutContent:{
       position:"relative",
-      backgroundColor:"#fff",
+      backgroundColor:"rgba(146, 185, 185, 0.57)",
       height:"100%"
   
     },
