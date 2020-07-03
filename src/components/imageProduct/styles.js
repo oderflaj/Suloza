@@ -22,4 +22,12 @@ export default StyleSheet.create({
     width: 70,
     
   },
+  loading:{
+    position:"absolute",
+    alignSelf:"center",
+    height:"100%",
+    flexDirection:"column",
+    justifyContent:"center",
+
+  }
 })

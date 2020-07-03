@@ -1,10 +1,12 @@
 import React from "react";
 import {View,Image,Text} from "react-native";
 import styles from "../styles";
-import { MaterialCommunityIcons } from '@expo/vector-icons';
+import { FontAwesome5 } from '@expo/vector-icons';
 
 export default ({pathImage,sizeBorder=0,sizeImageProduct=0,borderColorCircle,borderWidth,backgroundColor})=>{
   
+  const [loaded,setLoaded] = React.useState(false);
+
   let settingContent = {
     
     backgroundColor: backgroundColor|styles.imageContent.backgroundColor ,
@@ -18,33 +20,43 @@ export default ({pathImage,sizeBorder=0,sizeImageProduct=0,borderColorCircle,bor
     }else{
       delete styles.borderWidth
     }
-    
-  //const[loading,setLoading]=React.useState(true);
-
-  return(
-      <View style={[styles.imageContent, settingContent]}>
-
-          <Image
+  
+  const loadinImage = ()=>(<View style={styles.loading}>
+    <FontAwesome5 name="glass-cheers" size={24} color="rgba(7, 20, 33, 0.68)" />
+  </View>)
+  
+/**
+ * 
+ * <Image
             style={[styles.image,
             {
               height:styles.image.height + sizeImageProduct, 
               width:styles.image.width + sizeImageProduct
               }]}
             source={pathImage}
-            defaultSource={require("../../../../assets/loadingImage.png")}
-            /*
-            onLoadEnd={()=>{
-              console.log("Termina----------xxxx")
-              console.log(loading)
-              setLoading(!loading)
-            }} 
-            onLoadStart={()=>{
-              console.log("Inicia------->")
-              console.log(loading)
-              setLoading(!loading)
-            }}
-            */
+            onLoad={()=>setLoaded(true)}
           />
+          {!loaded && <View style={styles.loading}>
+                        <FontAwesome5 name="glass-cheers" size={24} color="rgba(7, 20, 33, 0.68)" />
+                      </View>}
+ */
+
+  return(
+      <View style={[styles.imageContent, settingContent]}>
+      <Image
+            style={[styles.image,
+            {
+              height:styles.image.height + sizeImageProduct, 
+              width:styles.image.width + sizeImageProduct
+              }]}
+            source={pathImage}
+            onLoad={()=>setLoaded(true)}
+          />
+          {!loaded && <View style={styles.loading}>
+                        <FontAwesome5 name="glass-cheers" size={24} color="rgba(7, 20, 33, 0.68)" />
+                      </View>}
+                      
+          
         </View>
   )
 }
