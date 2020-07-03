@@ -23,16 +23,17 @@ export const styles = StyleSheet.create({
   bullets: {
     position: 'absolute',
     top: 0,
-    right: 0,
+    alignSelf:"center",
     display: 'flex',
-    justifyContent: 'flex-start',
+    /*justifyContent: 'flex-start',*/
     flexDirection: 'row',
-    paddingHorizontal: 10,
-    paddingTop: 5,
+    /*paddingHorizontal: 10,*/
+    
   },
   bullet: {
-    paddingHorizontal: 5,
-    fontSize: 20,
+    paddingHorizontal: 6,
+    fontSize: 25,
+    color:"rgb(48, 119, 119)",
   },
   
   overContainer:{
@@ -46,10 +47,13 @@ export const styles = StyleSheet.create({
     flexDirection:"row",
     width:"100%",
     borderWidth:0,
+    justifyContent:"space-around",
+    
+   },
+   arrow:{
    }
 });
 
-const shadow = "rgba(122, 162, 178, 0.2)";
 
 export const stylesSlide = StyleSheet.create({
     slide: {
