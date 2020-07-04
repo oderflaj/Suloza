@@ -28,17 +28,6 @@ export default function productNavigator(state=initialState, action){
       }
 
     case SET_PRODUCT_CATEGORY:
-      /*
-      console.log("Into Reducer");
-      console.log(state.category);
-      
-      console.log("Reducers------Actions")
-      console.log(action.category)
-      console.log("Reducers------State")
-      console.log(state.category)
-      console.log(`Comparacion state state.category.category:${state.category.category}===${action.category.category}`);
-      console.log(state.category.category===action.category.category)
-      */
       return{
         ...state,
         category:action.category,

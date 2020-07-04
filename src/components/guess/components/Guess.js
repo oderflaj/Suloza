@@ -7,9 +7,7 @@ export default ({guesses,actions})=>{
   const [guessCount,setGuessCount] = useState("0");
   const [initialValue,setInitialValue] = useState(true);
 
-  //console.log(guesses)
-  //console.log(actions)
-  
+    
   useEffect(()=>{
     if(guessCount==0 && initialValue){
       

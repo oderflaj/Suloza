@@ -9,16 +9,7 @@ import {tableCatalog} from "../../../services/Data";
 
 export default ({category})=>{
     
-    /*
-    const [produtSelected,setProductSelect] = React.useState("");
-    //console.log(category)
-    React.useEffect(()=>{
-        if(produtSelected!=category.category){
-            setProductSelect(category.category);
-        }
-        console.log(category)
-    });
-    */
+    
     return(
     <View>
         <CarouselProducts

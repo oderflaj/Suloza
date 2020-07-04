@@ -50,7 +50,10 @@ export const styles = StyleSheet.create({
     justifyContent:"space-around",
     
    },
-   arrow:{
+   arrowTouch:{
+     borderWidth:0,
+     width:50,
+     alignItems:"center"
    }
 });
 

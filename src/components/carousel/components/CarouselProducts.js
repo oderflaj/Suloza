@@ -1,8 +1,8 @@
 import React from 'react'
 import { View, ScrollView, Text } from 'react-native'
 import { styles } from '../styles'
-import {Static} from './Static';
-import { AntDesign } from '@expo/vector-icons';
+//import {Static} from './Static';
+import Static from "../../../stores/ShoppingCartContainers/Static";
 import { SimpleLineIcons } from '@expo/vector-icons';
 
 export const Carousel = (props) => {
@@ -60,39 +60,18 @@ export const Carousel = (props) => {
     }
   })
 
-  
-    
-  
 
   const leftArrow = ()=>{
-    //console.log( `intervals->${intervals}`)
-    //console.log( `interval x->${interval}`)
-    if(showLeftArrow > 10){
-      return (
-        <View style={[styles.arrow]}>
-          <SimpleLineIcons name="arrow-left" size={24} color="rgb(48, 119, 119)" />
-        </View>
-      )
-    }
     return (
       <View style={[styles.arrow]}>
-        <SimpleLineIcons name="arrow-left" size={24} color="rgba(146, 185, 185, 0.57)" />
-      </View>
-    )
+        <SimpleLineIcons name="arrow-left" size={24} color={showLeftArrow>10?"rgb(48, 119, 119)":"rgba(146, 185, 185, 0.57)"} />
+      </View>)
   }
+
   const rightArrow = ()=>{
-    //console.log( `intervals->${intervals}`)
-    //console.log( `interval x->${interval}`)
-    if(interval < intervals){
-      return (
-        <View style={[styles.arrow]}>
-          <SimpleLineIcons name="arrow-right" size={24} color="rgb(48, 119, 119)" />
-        </View>
-      )
-    }
     return (
       <View style={[styles.arrow]}>
-        <SimpleLineIcons name="arrow-right" size={24} color="rgba(146, 185, 185, 0.57)" />
+        <SimpleLineIcons name="arrow-right" size={24} color={interval < intervals?"rgb(48, 119, 119)":"rgba(146, 185, 185, 0.57)"} />
       </View>
     )
   }
@@ -107,10 +86,7 @@ export const Carousel = (props) => {
         horizontal={true}
         contentContainerStyle={{ ...styles.scrollView, width: `${100 * intervals}%` }}
         showsHorizontalScrollIndicator={false}
-        onContentSizeChange={(w, h) => {
-          init(w);
-
-          }}
+        onContentSizeChange={(w, h) =>init(w)}
         onScroll={data => {
           setWidth(data.nativeEvent.contentSize.width);
           setInterval(getInterval(data.nativeEvent.contentOffset.x));
@@ -125,14 +101,14 @@ export const Carousel = (props) => {
               <Static
                 key={index}
                 imagePath={item.image}
+                product={item}
               />
             )
           
           })
         }
       </ScrollView>
-      {rightArrow()}
-      
+      {rightArrow()}      
     </View>
   )
 }

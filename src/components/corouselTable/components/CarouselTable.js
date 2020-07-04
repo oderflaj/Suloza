@@ -5,7 +5,6 @@ import { styles } from '../styles';
 import { Ionicons } from '@expo/vector-icons';
 
 export const CarouselTable = (props) => {
-  //console.log(props.items)
   const { items} = props;
   const itemsPerInterval = props.itemsPerInterval === undefined
     ? 1
@@ -105,12 +104,16 @@ export const CarouselTable = (props) => {
         <View style={styles.contentButtons}>
             <View style={styles.arrow}>
                 <TouchableOpacity onPress={()=>moveSlide("LEFT")}>
-                    <Ionicons name="md-arrow-dropleft" size={75} color={interval==1?"rgba(146, 185, 185, 0.57)":"rgb(48, 119, 119)"} />
+                    <View style={styles.arrowTouch}>
+                        <Ionicons name="md-arrow-dropleft" size={75} color={interval==1?"rgba(146, 185, 185, 0.57)":"rgb(48, 119, 119)"} />
+                    </View>
                 </TouchableOpacity>
             </View>
             <View style={styles.arrow}>
                 <TouchableOpacity onPress={()=>moveSlide("RIGHT")}>
-                    <Ionicons name="md-arrow-dropright" size={75} color={interval==intervals?"rgba(146, 185, 185, 0.57)":"rgb(48, 119, 119)"} />
+                    <View style={styles.arrowTouch}>
+                        <Ionicons name="md-arrow-dropright" size={75} color={interval==intervals?"rgba(146, 185, 185, 0.57)":"rgb(48, 119, 119)"} />
+                    </View>
                 </TouchableOpacity>
             </View>
         </View>

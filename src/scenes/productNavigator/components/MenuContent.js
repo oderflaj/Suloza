@@ -24,7 +24,7 @@ export default ({ turnOnOff, actions }) => {
       <View style={stylesContent.content}>
         <View style={stylesContent.closeMenuContent}>
         <TouchableWithoutFeedback onPress={actions.toggleProductMenu}>
-          <Ionicons name="ios-arrow-dropdown" size={33} color="black" />
+          <Ionicons name="ios-arrow-dropdown" size={33} color="rgba(54, 78, 88, 0.82)" />
         </TouchableWithoutFeedback>
           
         </View>
