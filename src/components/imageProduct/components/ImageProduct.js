@@ -6,7 +6,7 @@ import { FontAwesome5 } from '@expo/vector-icons';
 export default ({pathImage,sizeBorder=0,sizeImageProduct=0,borderColorCircle,borderWidth,backgroundColor})=>{
   
   const [loaded,setLoaded] = React.useState(false);
-  console.log(backgroundColor)
+  //console.log(backgroundColor)
   let settingContent = {
     
     backgroundColor: backgroundColor||styles.imageContent.backgroundColor ,
@@ -20,7 +20,7 @@ export default ({pathImage,sizeBorder=0,sizeImageProduct=0,borderColorCircle,bor
     }else{
       delete styles.borderWidth
     }
-    console.log(settingContent)
+    //console.log(settingContent)
   
 
   return(
