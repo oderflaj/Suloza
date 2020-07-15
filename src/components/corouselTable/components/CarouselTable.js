@@ -6,7 +6,8 @@ import { Ionicons } from "@expo/vector-icons";
 import Draggable from "../../draggable/components/Draggable";
 
 export const CarouselTable = (props) => {
-  const { items } = props;
+  const { items, cart } = props;
+
   const itemsPerInterval =
     props.itemsPerInterval === undefined ? 1 : props.itemsPerInterval;
 
@@ -78,6 +79,11 @@ export const CarouselTable = (props) => {
     }
   };
 
+  /*
+    <Draggable widthFrame={withFrame} heightFrame={heightFrame} />
+    <Draggable widthFrame={withFrame} heightFrame={heightFrame} />
+   */
+
   return (
     <View>
       <View style={styles.container}>
@@ -88,8 +94,14 @@ export const CarouselTable = (props) => {
             setHeightFrame(event.nativeEvent.layout.height);
           }}
         >
-          <Draggable widthFrame={withFrame} heightFrame={heightFrame} />
-          <Draggable widthFrame={withFrame} heightFrame={heightFrame} />
+          {cart.map((drag) => (
+            <Draggable
+              key={drag.id}
+              widthFrame={withFrame}
+              heightFrame={heightFrame}
+              imagePath={drag.imageToTable}
+            />
+          ))}
         </View>
         <ScrollView
           ref={refTable}

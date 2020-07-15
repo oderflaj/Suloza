@@ -3,7 +3,7 @@ import { Animated, View, PanResponder, Image } from "react-native";
 import { styles } from "../style";
 import { imageProductToTable, imageTable } from "../../../services/Images";
 
-export default ({ widthFrame, heightFrame }) => {
+export default ({ widthFrame, heightFrame, imagePath }) => {
   const [WidthFrame, setWidthFrame] = useState(widthFrame);
   const [HeightFrame, setHeightFrame] = useState(heightFrame);
 
@@ -49,7 +49,7 @@ export default ({ widthFrame, heightFrame }) => {
         transform: [{ translateX: pan.x }, { translateY: pan.y }],
       }}
       {...panResponder.panHandlers}
-      source={imageProductToTable.glass4}
+      source={imagePath}
     ></Animated.Image>
   );
 };
