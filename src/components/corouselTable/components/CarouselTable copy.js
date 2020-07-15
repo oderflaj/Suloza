@@ -1,5 +1,11 @@
-import React, { useState } from "react";
-import { View, ScrollView, Text, TouchableOpacity } from "react-native";
+import React from "react";
+import {
+  View,
+  ScrollView,
+  Text,
+  TouchableWithoutFeedback,
+  TouchableOpacity,
+} from "react-native";
 import { SlideTable } from "./SlideTable";
 import { styles } from "../styles";
 import { Ionicons } from "@expo/vector-icons";
@@ -13,9 +19,6 @@ export const CarouselTable = (props) => {
   const [interval, setInterval] = React.useState(1);
   const [intervals, setIntervals] = React.useState(1);
   const [width, setWidth] = React.useState(0);
-
-  const [withFrame, setWithFrame] = useState(0);
-  const [heightFrame, setHeightFrame] = useState(0);
 
   const init = (width) => {
     // initialise width
@@ -81,15 +84,8 @@ export const CarouselTable = (props) => {
   return (
     <View>
       <View style={styles.container}>
-        <View
-          style={styles.overContainer}
-          onLayout={(event) => {
-            setWithFrame(event.nativeEvent.layout.width);
-            setHeightFrame(event.nativeEvent.layout.height);
-          }}
-        >
-          <Draggable widthFrame={withFrame} heightFrame={heightFrame} />
-          <Draggable widthFrame={withFrame} heightFrame={heightFrame} />
+        <View style={styles.overContainer}>
+          <Draggable />
         </View>
         <ScrollView
           ref={refTable}
