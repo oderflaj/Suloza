@@ -10,8 +10,9 @@ export const Static = (props) => {
 
   React.useEffect(() => {
     //console.log("React.useEffect.....................")
-    //console.log(props)
-    //console.log(props.cart)
+    //console.log(props);
+    //console.log(props.cart);
+    //console.log(props.turnProductTable);
 
     let findSelected = cart.find(
       (productCart) => productCart.id === product.id
@@ -29,9 +30,11 @@ export const Static = (props) => {
       //console.log("cargara product")
       //console.log(product)
       actions.addProduct(product);
+      actions.turnProductTableReset(true);
     } else {
       actions.removeProduct(product.id);
     }
+    actions.turnProductTableReset(false);
     toggleSelected(!selected);
   };
 

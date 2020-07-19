@@ -6,6 +6,7 @@ import CarouselTable from "../../components/corouselTable/components/CarouselTab
 const mapStateToProps = (state) => {
   return {
     cart: state.reducerShoppingCart.cart,
+    turnProductTable: state.reducerShoppingCart.turnProductTable,
   };
 };
 const mapDispatchToProps = (dispatch) => ({

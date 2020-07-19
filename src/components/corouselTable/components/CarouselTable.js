@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { View, ScrollView, Text, TouchableOpacity } from "react-native";
 import { SlideTable } from "./SlideTable";
 import { styles } from "../styles";
@@ -79,10 +79,14 @@ export const CarouselTable = (props) => {
     }
   };
 
-  /*
-    <Draggable widthFrame={withFrame} heightFrame={heightFrame} />
-    <Draggable widthFrame={withFrame} heightFrame={heightFrame} />
+  /**
+   * Se va a actualizar la vista
    */
+  useEffect(() => {
+    //console.log("Entra CarouselTable Reset");
+    //console.log(turnProductTable);
+    //actions.turnProductTableReset(false);
+  }, []);
 
   return (
     <View>
@@ -100,6 +104,8 @@ export const CarouselTable = (props) => {
               widthFrame={withFrame}
               heightFrame={heightFrame}
               imagePath={drag.imageToTable}
+              widthImage={drag.ImageToTableWidth}
+              heightImage={drag.ImageToTableHeight}
             />
           ))}
         </View>
