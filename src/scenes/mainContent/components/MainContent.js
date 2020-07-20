@@ -5,18 +5,21 @@ import CarouselProducts from "../../../stores/ProductNavigationContainers/Carous
 import CarouselTable from "../../../stores/ShoppingCartContainers/CarouselTable";
 import Button from "../../../components/button/componets/Button";
 import { tableCatalog } from "../../../services/Data";
+import { styles } from "../style";
 
 export default ({ category }) => {
   return (
-    <View>
+    <View style={styles.content}>
       <CarouselProducts itemsPerInterval={3} items={category.products} />
 
       <CarouselTable items={tableCatalog} />
 
-      <Button
-        title={"Confirmar"}
-        onPress={() => console.log("Presiono Confirmar")}
-      />
+      <View style={styles.buttonStyle}>
+        <Button
+          title={"CONFIRMAR"}
+          onPress={() => console.log("Presiono Confirmar")}
+        />
+      </View>
     </View>
   );
 };

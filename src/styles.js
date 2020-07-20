@@ -18,18 +18,23 @@ export const styles = StyleSheet.create({
   },
   headerLeft: {
     justifyContent: "space-around",
+    width: "25%",
   },
   headerCenter: {
-    justifyContent: "space-around",
     width: "50%",
   },
   headerCenterFont: {
-    fontSize: 22,
+    fontSize: 50,
     textAlign: "center",
-    fontWeight: "bold",
+    color: "#364E58",
+    fontFamily: "DancingScript-Bold",
   },
   headerRight: {
-    justifyContent: "space-around",
+    width: "25%",
+
+    alignItems: "center",
+    marginTop: "auto",
+    marginBottom: "auto",
   },
   mainContent: {
     backgroundColor: "transparent",
