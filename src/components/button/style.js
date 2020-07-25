@@ -1,19 +1,23 @@
 import { StyleSheet } from "react-native";
+import { globalStyle } from "../../styles";
 
 export const styles = StyleSheet.create({
+  fatherContainer: {
+    width: 320,
+  },
   container: {
-    borderWidth: 0,
-    alignSelf: "center",
-    margin: "auto",
-    borderRadius: 4,
+    width: "100%",
+    alignItems: "center",
+    borderRadius: 10,
     paddingVertical: 10,
     paddingHorizontal: 15,
-    backgroundColor: "rgb(48, 119, 119)",
+    backgroundColor: globalStyle.globalFontColor, //"rgb(48, 119, 119)",
   },
 
   textButton: {
-    fontSize: 17,
-    color: "white",
+    fontSize: 20,
+    color: "rgba(219, 219, 219, 1)",
+    fontFamily: "Spartan-Medium",
   },
 });
 

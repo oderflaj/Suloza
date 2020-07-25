@@ -1,17 +1,8 @@
 import React, { useState, useEffect } from "react";
-import {
-  View,
-  Text,
-  StyleSheet,
-  StatusBar,
-  Image,
-  Modal,
-  NativeModules,
-  StatusBarIOS,
-  Platform,
-} from "react-native";
+import { View, Text, StatusBar, NativeModules, Platform } from "react-native";
 import { styles } from "./../styles";
-import ShoppingCartButton from "./shoppingCart/components/ShoppingCartButton";
+//import ShoppingCartButton from "./shoppingCart/components/ShoppingCartButton";
+import ShoppingCartButton from "../stores/ShoppingCartContainers/ShoppingCartButton";
 import MenuContent from "../stores/ProductNavigationContainers/MenuContent";
 import MenuButton from "../stores/ProductNavigationContainers/MenuButton";
 //import MainContent from "../scenes/mainContent/components/MainContent";
@@ -45,7 +36,9 @@ const Layout = () => {
 
   const loadFonts = async () => {
     await Font.loadAsync({
+      "DancingScript-Regular": require("../../assets/fonts/DancingScript/DancingScript-Regular.ttf"),
       "DancingScript-Bold": require("../../assets/fonts/DancingScript/DancingScript-Bold.ttf"),
+      "Spartan-Medium": require("../../assets/fonts/Spartan/Spartan-Medium.ttf"),
     });
     setFontsLoaded(true);
   };

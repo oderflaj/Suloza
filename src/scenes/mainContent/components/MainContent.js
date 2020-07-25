@@ -16,7 +16,7 @@ export default ({ category }) => {
 
       <View style={styles.buttonStyle}>
         <Button
-          title={"CONFIRMAR"}
+          title={"Confirmar"}
           onPress={() => console.log("Presiono Confirmar")}
         />
       </View>

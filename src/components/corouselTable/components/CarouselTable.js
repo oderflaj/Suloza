@@ -4,6 +4,7 @@ import { SlideTable } from "./SlideTable";
 import { styles } from "../styles";
 import { Ionicons } from "@expo/vector-icons";
 import Draggable from "../../draggable/components/Draggable";
+import { globalStyle } from "../../../styles";
 
 export const CarouselTable = (props) => {
   const { items, cart } = props;
@@ -142,7 +143,7 @@ export const CarouselTable = (props) => {
                 color={
                   interval == 1
                     ? "rgba(146, 185, 185, 0.57)"
-                    : "rgb(48, 119, 119)"
+                    : globalStyle.globalFontColor
                 }
               />
             </View>
@@ -157,7 +158,7 @@ export const CarouselTable = (props) => {
                 color={
                   interval == intervals
                     ? "rgba(146, 185, 185, 0.57)"
-                    : "rgb(48, 119, 119)"
+                    : globalStyle.globalFontColor
                 }
               />
             </View>
