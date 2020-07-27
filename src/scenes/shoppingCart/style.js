@@ -18,7 +18,7 @@ export const styles = new StyleSheet.create({
     position: "absolute",
     padding: 2,
     zIndex: 10,
-    right: 15,
+    right: 18,
     top: 20,
     borderColor: colorCart,
     borderWidth: 0,
@@ -26,7 +26,7 @@ export const styles = new StyleSheet.create({
   cartCountFount: {
     color: colorCart,
     /*color: "#fff",*/
-    fontSize: 12,
+    fontSize: 11,
     fontFamily: "Spartan-Medium",
   },
   imageContent: {
@@ -44,8 +44,7 @@ export const styles = new StyleSheet.create({
 
   guessLabel: {
     color: colorCart,
-    fontSize: 13,
-    width: 110,
+    fontSize: 12,
     fontFamily: "Spartan-Medium",
   },
 });

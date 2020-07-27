@@ -32,7 +32,7 @@ export default ({ guesses }) => {
           </View>
           <View style={styles.cartIcon}>
             {/*<AntDesign name="shoppingcart" size={40} color={colorCart} />*/}
-            <FontAwesome name="opencart" size={43} color={colorCart} />
+            <FontAwesome name="opencart" size={40} color={colorCart} />
           </View>
         </View>
       </TouchableWithoutFeedback>
