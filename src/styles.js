@@ -2,6 +2,7 @@ import { StyleSheet } from "react-native";
 
 export const globalStyle = {
   globalFontColor: "rgba(54, 78, 88, 1)", //globalFontColor: "rgba(54, 78, 88, 0.82)", rgb(48, 119, 119)
+  globalFontColorOdd: "rgb(146, 185, 185)",
 };
 
 export const styles = StyleSheet.create({

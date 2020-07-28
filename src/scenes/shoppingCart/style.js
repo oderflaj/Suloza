@@ -2,6 +2,12 @@ import { StyleSheet } from "react-native";
 
 export const colorCart = "#364E58";
 
+export const styleShoppingCart = new StyleSheet.create({
+  content: {
+    backgroundColor: "rgb(215, 233, 233)",
+  },
+});
+
 export const styles = new StyleSheet.create({
   cartIcon: {
     /*

@@ -1,9 +1,7 @@
 import React from "react";
 import { View, TouchableWithoutFeedback, Modal } from "react-native";
-//import Guess from "../../../components/guess/components/Guess";
 import Guess from "../../../stores/ShoppingCartContainers/Guess";
 import User from "../../../components/user/components/User";
-//import ProductContainer from "../../../components/productContainer/components/ProductContainer";
 import ProductContainer from "../../../stores/ProductNavigationContainers/ProductContainer";
 import { Ionicons } from "@expo/vector-icons";
 import { globalStyle } from "../../../styles";

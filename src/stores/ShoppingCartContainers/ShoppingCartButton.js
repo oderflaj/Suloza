@@ -6,6 +6,7 @@ import ShoppingCartButton from "../../scenes/shoppingCart/components/ShoppingCar
 const mapStateToProps = (state) => {
   return {
     guesses: state.reducerShoppingCart.guesses,
+    quantity: state.reducerShoppingCart.quantity,
   };
 };
 const mapDispatchToProps = (dispatch) => ({

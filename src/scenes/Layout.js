@@ -1,17 +1,16 @@
 import React, { useState, useEffect } from "react";
 import { View, Text, StatusBar, NativeModules, Platform } from "react-native";
 import { styles } from "./../styles";
-//import ShoppingCartButton from "./shoppingCart/components/ShoppingCartButton";
 import ShoppingCartButton from "../stores/ShoppingCartContainers/ShoppingCartButton";
 import MenuContent from "../stores/ProductNavigationContainers/MenuContent";
 import MenuButton from "../stores/ProductNavigationContainers/MenuButton";
-//import MainContent from "../scenes/mainContent/components/MainContent";
+import ShoppingCart from "./shoppingCart/ShoppingCart";
 import MainContent from "../stores/ProductNavigationContainers/MainContent";
-import { createStore } from "redux";
+import { store } from "../stores/GlobalContainer/Global";
 import { Provider } from "react-redux";
-import combine from "../stores/ConfigureStore";
 import * as Font from "expo-font";
-import { AppLoading } from "expo";
+import AppLoading from "../components/appLoading/components/AppLoading";
+import { LocalStorage } from "../services/Function";
 
 const Layout = () => {
   const { StatusBarManager } = NativeModules;
@@ -24,6 +23,7 @@ const Layout = () => {
   useEffect(() => {
     //statusBarHeight
     //StatusBar.currentHeight
+    LocalStorage.InitializeSuloza();
     if (Platform.OS === "ios") {
       StatusBarManager.getHeight((response) =>
         setStatusBarHeight(response.height)
@@ -47,6 +47,7 @@ const Layout = () => {
     return (
       <View style={styles.layoutContent}>
         <MenuContent />
+        <ShoppingCart />
         <View style={[styles.statusBar, { height: statusBarHeight }]}></View>
         <View style={styles.headerContent}>
           <View style={styles.headerLeft}>
@@ -70,8 +71,6 @@ const Layout = () => {
 };
 
 export default () => {
-  let store = createStore(combine);
-
   return (
     <Provider store={store}>
       <Layout />

@@ -4,7 +4,7 @@ import { AntDesign } from "@expo/vector-icons";
 import { FontAwesome } from "@expo/vector-icons";
 import { styles, colorCart } from "../style";
 
-export default ({ guesses }) => {
+export default ({ guesses, quantity }) => {
   const count = 18;
 
   const displayAlert = () => {
@@ -28,7 +28,7 @@ export default ({ guesses }) => {
       <TouchableWithoutFeedback onPress={() => displayAlert()}>
         <View style={styles.imageContent}>
           <View style={styles.cartCount}>
-            <Text style={styles.cartCountFount}>&nbsp;{count}&nbsp;</Text>
+            <Text style={styles.cartCountFount}>&nbsp;{quantity}&nbsp;</Text>
           </View>
           <View style={styles.cartIcon}>
             {/*<AntDesign name="shoppingcart" size={40} color={colorCart} />*/}

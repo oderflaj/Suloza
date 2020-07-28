@@ -272,3 +272,11 @@ export const tableCatalog = [
     image: imageTable.table8,
   },
 ];
+
+export const userInformation = {
+  name: "Invitado",
+  email: "",
+  telephone: "",
+  logged: false,
+  orderStatus: "N/A",
+};

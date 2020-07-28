@@ -1,12 +1,8 @@
 {
   "expo": {
-    "name": "suloza",
-    "slug": "snack-ed4bdb4a-5149-4635-ba84-cab2203d737d",
-    "platforms": [
-      "ios",
-      "android",
-      "web"
-    ],
+    "name": "Suloza",
+    "slug": "Suloza",
+    "platforms": ["ios", "android", "web"],
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -18,12 +14,10 @@
     "updates": {
       "fallbackToCacheTimeout": 0
     },
-    "assetBundlePatterns": [
-      "**/*"
-    ],
+    "assetBundlePatterns": ["**/*"],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": false
     },
-    "description": "Calatlog application to créate configurations of products for dinner and another events tha use dishes, glasses, cups, etc"
+    "description": "Catalog application to créate configurations of products for dinner and another events that use dishes, glasses, cups, etc"
   }
 }
