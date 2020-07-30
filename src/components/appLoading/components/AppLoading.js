@@ -56,7 +56,7 @@ export default () => {
         return;
       }
     }, 380);
-  }, []);
+  }, [counter, loadingCount1, loadingCount2, loadingCount3, loadingCount4]);
 
   return (
     <View style={stylesAppLoading.content}>

@@ -6,11 +6,12 @@ import MenuContent from "../stores/ProductNavigationContainers/MenuContent";
 import MenuButton from "../stores/ProductNavigationContainers/MenuButton";
 import ShoppingCart from "./shoppingCart/ShoppingCart";
 import MainContent from "../stores/ProductNavigationContainers/MainContent";
-import { store } from "../stores/GlobalContainer/Global";
+import { store, persistor } from "../stores/GlobalContainer/Global";
 import { Provider } from "react-redux";
 import * as Font from "expo-font";
 import AppLoading from "../components/appLoading/components/AppLoading";
-import { LocalStorage } from "../services/Function";
+//import { LocalStorage, SaveSession } from "../services/Function";
+import { PersistGate } from "redux-persist/integration/react";
 
 const Layout = () => {
   const { StatusBarManager } = NativeModules;
@@ -23,7 +24,9 @@ const Layout = () => {
   useEffect(() => {
     //statusBarHeight
     //StatusBar.currentHeight
-    LocalStorage.InitializeSuloza();
+    //await LocalStorage.InitializeSuloza();
+    //SaveSession();
+
     if (Platform.OS === "ios") {
       StatusBarManager.getHeight((response) =>
         setStatusBarHeight(response.height)
@@ -73,7 +76,9 @@ const Layout = () => {
 export default () => {
   return (
     <Provider store={store}>
-      <Layout />
+      <PersistGate loading={null} persistor={persistor}>
+        <Layout />
+      </PersistGate>
     </Provider>
   );
 };
