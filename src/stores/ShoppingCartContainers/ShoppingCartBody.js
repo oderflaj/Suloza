@@ -1,15 +1,17 @@
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
 import * as ShoppingCartAction from "../ShoppingCart/actions";
-import ShoppingCart from "../../scenes/shoppingCart/ShoppingCart";
+import ShoppingCartBody from "../../scenes/shoppingCart/components/ShoppingCartBody";
 
 const mapStateToProps = (state) => {
   return {
-    turnOnOffShoppingCart: state.reducerShoppingCart.turnOnOffShoppingCart,
+    guesses: state.reducerShoppingCart.guesses,
+    quantity: state.reducerShoppingCart.quantity,
+    cart: state.reducerShoppingCart.cart,
   };
 };
 const mapDispatchToProps = (dispatch) => ({
   actions: bindActionCreators(ShoppingCartAction, dispatch),
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(ShoppingCart);
+export default connect(mapStateToProps, mapDispatchToProps)(ShoppingCartBody);

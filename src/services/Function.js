@@ -16,8 +16,7 @@ export function SaveSession() {
 export const LocalStorage = {
   InitializeSuloza: async () => {
     let userSession = await AsyncStorage.getItem("userSession");
-    console.log("userSession");
-    console.log(userSession === null ? "false" : "true");
+
     if (userSession != null) {
       //store = JSON.parse(userSession);
       //console.log(store.getState());

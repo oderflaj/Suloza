@@ -1,11 +1,17 @@
 import React from "react";
-import { View, Text } from "react-native";
+import { View, Text, ScrollView } from "react-native";
 import { styleShoppingCartBody } from "../style";
+import CardProduct from "../../../components/cardProduct/components/CardProduct";
 
-export default () => {
+export default ({ guesses, quantity, cart, actions }) => {
+  console.log(cart);
+  console.log(guesses);
+  console.log(quantity);
   return (
-    <View>
-      <Text>BODY</Text>
-    </View>
+    <ScrollView>
+      {cart.map((product) => (
+        <CardProduct key={product.id} />
+      ))}
+    </ScrollView>
   );
 };

@@ -7,7 +7,7 @@ import Button from "../../../components/button/componets/Button";
 import { tableCatalog } from "../../../services/Data";
 import { styles } from "../style";
 
-export default ({ category }) => {
+export default ({ category, actions }) => {
   return (
     <View style={styles.content}>
       <CarouselProducts itemsPerInterval={3} items={category.products} />
@@ -17,7 +17,7 @@ export default ({ category }) => {
       <View style={styles.buttonStyle}>
         <Button
           title={"Confirmar"}
-          onPress={() => console.log("Presiono Confirmar")}
+          onPress={() => actions.turnOnOffShoppingCart()}
         />
       </View>
     </View>
