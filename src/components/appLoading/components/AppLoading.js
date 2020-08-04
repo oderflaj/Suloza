@@ -10,53 +10,60 @@ import { globalStyle } from "../../../styles";
 export default () => {
   const [counter, setCounter] = useState(0);
   const [loadingCount1, setLoadingCount1] = useState(
-    globalStyle.globalFontColorOdd
+    globalStyle.globalFontColor
   );
   const [loadingCount2, setLoadingCount2] = useState(
-    globalStyle.globalFontColorOdd
+    globalStyle.globalFontColor
   );
   const [loadingCount3, setLoadingCount3] = useState(
-    globalStyle.globalFontColorOdd
+    globalStyle.globalFontColor
   );
   const [loadingCount4, setLoadingCount4] = useState(
-    globalStyle.globalFontColorOdd
+    globalStyle.globalFontColor
   );
 
   let limit = 0;
+  /*
+  setTimeout(() => {
+    switch (counter) {
+      case 0:
+        setLoadingCount1(globalStyle.globalFontColor);
+        setCounter(counter + 1);
+        break;
+      case 1:
+        setLoadingCount2(globalStyle.globalFontColor);
+        setCounter(counter + 1);
+        break;
+      case 2:
+        setLoadingCount3(globalStyle.globalFontColor);
+        setCounter(counter + 1);
+        break;
+      case 3:
+        setLoadingCount4(globalStyle.globalFontColor);
+        setCounter(counter + 1);
+        break;
 
-  useEffect(() => {
-    setTimeout(() => {
-      switch (counter) {
-        case 0:
-          setLoadingCount1(globalStyle.globalFontColor);
-          setCounter(counter + 1);
-          break;
-        case 1:
-          setLoadingCount2(globalStyle.globalFontColor);
-          setCounter(counter + 1);
-          break;
-        case 2:
-          setLoadingCount3(globalStyle.globalFontColor);
-          setCounter(counter + 1);
-          break;
-        case 3:
-          setLoadingCount4(globalStyle.globalFontColor);
-          setCounter(counter + 1);
-          break;
+      default:
+        setLoadingCount1(globalStyle.globalFontColorOdd);
+        setLoadingCount2(globalStyle.globalFontColorOdd);
+        setLoadingCount3(globalStyle.globalFontColorOdd);
+        setLoadingCount4(globalStyle.globalFontColorOdd);
+        setCounter(0);
+    }
+    limit++;
+    if (limit == 10) {
+      return;
+    }
+  }, 380);
+  */
 
-        default:
-          setLoadingCount1(globalStyle.globalFontColorOdd);
-          setLoadingCount2(globalStyle.globalFontColorOdd);
-          setLoadingCount3(globalStyle.globalFontColorOdd);
-          setLoadingCount4(globalStyle.globalFontColorOdd);
-          setCounter(0);
-      }
-      limit++;
-      if (limit == 10) {
-        return;
-      }
-    }, 380);
-  }, [counter, loadingCount1, loadingCount2, loadingCount3, loadingCount4]);
+  useEffect(() => {}, [
+    counter,
+    loadingCount1,
+    loadingCount2,
+    loadingCount3,
+    loadingCount4,
+  ]);
 
   return (
     <View style={stylesAppLoading.content}>

@@ -6,11 +6,13 @@ const initialState = {
   guesses: "0",
   cart: [],
   turnProductTable: false,
+  turnOnOffShoppingCart: false,
 };
 
 //Carculo del monto del carrito de compra
 const calcAmount = (currentCart) => {
-  if (currentCart.length == 0) {
+  console.log(currentCart);
+  if (typeof currentCart == "undefined" || currentCart.length == 0) {
     return 0;
   }
   let amountReduced = currentCart.reduce((a, b) => ({
@@ -22,6 +24,10 @@ const calcAmount = (currentCart) => {
 export default function shoppingCart(state = initialState, action) {
   switch (action.type) {
     case Actions.SET_GUESSES:
+      state.cart = state.cart.map((product) => {
+        product.units = action.guesses;
+        return product;
+      });
       return {
         ...state,
         guesses: action.guesses,
@@ -29,6 +35,7 @@ export default function shoppingCart(state = initialState, action) {
         amount: calcAmount(state.cart) * action.guesses,
       };
     case Actions.ADD_PRODUCT:
+      action.product["units"] = state.cart.length * state.guesses;
       state.cart.push(action.product);
       return {
         ...state,
@@ -51,6 +58,13 @@ export default function shoppingCart(state = initialState, action) {
         ...state,
         turnProductTable: action.turnProductTable,
       };
+
+    case Actions.TRUNONOFF_SHOPPINGCART:
+      return {
+        ...state,
+        turnOnOffShoppingCart: !state.turnOnOffShoppingCart,
+      };
+
     default:
       return state;
   }

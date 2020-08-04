@@ -13,11 +13,13 @@ export default ({ turnOnOff, actions }) => {
       <View style={stylesContent.content}>
         <View style={stylesContent.closeMenuContent}>
           <TouchableWithoutFeedback onPress={actions.toggleProductMenu}>
-            <Ionicons
-              name="ios-arrow-dropdown"
-              size={33}
-              color={globalStyle.globalFontColor}
-            />
+            <View>
+              <Ionicons
+                name="ios-arrow-dropdown"
+                size={33}
+                color={globalStyle.globalFontColor}
+              />
+            </View>
           </TouchableWithoutFeedback>
         </View>
         <View style={stylesContent.centeredView}>

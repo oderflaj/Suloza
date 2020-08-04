@@ -8,8 +8,8 @@ import { store } from "../stores/GlobalContainer/Global";
 store.subscribe(SaveSession);
 
 export function SaveSession() {
-  console.log("SaveSession-----------------------\n--------------------------");
-  console.log(store.getState());
+  //console.log("SaveSession-----------------------\n--------------------------");
+  //console.log(store.getState());
   //AsyncStorage.setItem("userSession", JSON.stringify(store.getState()));
 }
 

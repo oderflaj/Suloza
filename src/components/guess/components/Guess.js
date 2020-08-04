@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
-import { View, Text, TextInput } from "react-native";
+import { View, Text, TextInput, TouchableNativeFeedback } from "react-native";
 import { styles } from "../styles";
+import { FontAwesome5 } from "@expo/vector-icons";
+import { globalStyle } from "../../../styles";
 
 export default ({ guesses, turnOnOff, actions }) => {
   const [guessCount, setGuessCount] = useState("0");
@@ -14,6 +16,12 @@ export default ({ guesses, turnOnOff, actions }) => {
   });
 
   const setFormat = (textValue) => {
+    console.log(textValue);
+
+    if (textValue < 0) {
+      textValue = 0;
+    }
+
     if (textValue[0] == 0 && textValue.length > 1) {
       textValue = textValue.substring(1);
     }
@@ -21,6 +29,9 @@ export default ({ guesses, turnOnOff, actions }) => {
     if (textValue.length < 1) {
       setGuessCount("0");
       return 0;
+    }
+    if (typeof textValue == "number") {
+      textValue = textValue.toString();
     }
     let patt1 = /[0-9]+/g;
     let result = textValue.match(patt1);
@@ -34,6 +45,22 @@ export default ({ guesses, turnOnOff, actions }) => {
   return (
     <View style={styles.container}>
       <Text style={styles.guessText}>Asistentes&nbsp;&nbsp;</Text>
+      <View style={styles.buttonGuess}>
+        <TouchableNativeFeedback
+          onPress={() => {
+            setGuessCount(setFormat((parseInt(guessCount) + 1).toString()));
+            actions.setGuess(setFormat((parseInt(guessCount) + 1).toString()));
+          }}
+        >
+          <View>
+            <FontAwesome5
+              name="plus-circle"
+              size={20}
+              color={globalStyle.globalFontColor}
+            />
+          </View>
+        </TouchableNativeFeedback>
+      </View>
       <TextInput
         style={styles.guessTextInput}
         keyboardType={"number-pad"}
@@ -46,6 +73,22 @@ export default ({ guesses, turnOnOff, actions }) => {
         value={guessCount}
         onEndEditing={() => actions.setGuess(guessCount)}
       />
+      <View style={styles.buttonGuess}>
+        <TouchableNativeFeedback
+          onPress={() => {
+            setGuessCount(setFormat((parseInt(guessCount) - 1).toString()));
+            actions.setGuess(setFormat((parseInt(guessCount) - 1).toString()));
+          }}
+        >
+          <View>
+            <FontAwesome5
+              name="minus-circle"
+              size={20}
+              color={globalStyle.globalFontColor}
+            />
+          </View>
+        </TouchableNativeFeedback>
+      </View>
     </View>
   );
 };

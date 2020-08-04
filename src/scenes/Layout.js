@@ -4,7 +4,7 @@ import { styles } from "./../styles";
 import ShoppingCartButton from "../stores/ShoppingCartContainers/ShoppingCartButton";
 import MenuContent from "../stores/ProductNavigationContainers/MenuContent";
 import MenuButton from "../stores/ProductNavigationContainers/MenuButton";
-import ShoppingCart from "./shoppingCart/ShoppingCart";
+import ShoppingCart from "../stores/ShoppingCartContainers/ShoppingCart.js";
 import MainContent from "../stores/ProductNavigationContainers/MainContent";
 import { store, persistor } from "../stores/GlobalContainer/Global";
 import { Provider } from "react-redux";
@@ -42,6 +42,7 @@ const Layout = () => {
       "DancingScript-Regular": require("../../assets/fonts/DancingScript/DancingScript-Regular.ttf"),
       "DancingScript-Bold": require("../../assets/fonts/DancingScript/DancingScript-Bold.ttf"),
       "Spartan-Medium": require("../../assets/fonts/Spartan/Spartan-Medium.ttf"),
+      "Spartan-Bold": require("../../assets/fonts/Spartan/Spartan-Bold.ttf"),
     });
     setFontsLoaded(true);
   };
