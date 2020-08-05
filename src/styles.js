@@ -1,8 +1,11 @@
 import { StyleSheet } from "react-native";
 
 export const globalStyle = {
+  globalFontColorButton: "rgba(219, 219, 219, 1)",
   globalFontColor: "rgba(54, 78, 88, 1)", //globalFontColor: "rgba(54, 78, 88, 0.82)", rgb(48, 119, 119)
   globalFontColorOdd: "rgb(146, 185, 185)",
+  globalBackgroundColor: "rgb(215, 233, 233)",
+  globalBackgroundColorCart: "rgba(146, 185, 185, 0.6)",
 };
 
 export const styles = StyleSheet.create({

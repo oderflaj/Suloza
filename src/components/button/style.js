@@ -6,8 +6,9 @@ export const styles = StyleSheet.create({
     width: 320,
   },
   container: {
+    flexDirection: "row",
     width: "100%",
-    alignItems: "center",
+    justifyContent: "center",
     borderRadius: 10,
     paddingVertical: 10,
     paddingHorizontal: 15,
@@ -16,8 +17,14 @@ export const styles = StyleSheet.create({
 
   textButton: {
     fontSize: 20,
-    color: "rgba(219, 219, 219, 1)",
+    color: globalStyle.globalFontColorButton,
     fontFamily: "Spartan-Medium",
+  },
+  iconContainer: {
+    borderWidth: 0,
+    marginRight: 15,
+    marginTop: "auto",
+    marginBottom: "auto",
   },
 });
 

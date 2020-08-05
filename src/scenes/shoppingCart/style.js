@@ -5,7 +5,7 @@ export const colorCart = globalStyle.globalFontColor;
 
 export const styleShoppingCart = new StyleSheet.create({
   content: {
-    backgroundColor: "rgb(215, 233, 233)",
+    backgroundColor: globalStyle.globalBackgroundColor,
     flex: 1,
     alignItems: "center",
     position: "relative",
@@ -38,7 +38,7 @@ export const styleShoppingCartHeader = new StyleSheet.create({
     shadowRadius: 2.62,
 
     // background color must be set
-    backgroundColor: "transparent", // invisible color
+    backgroundColor: 0, // invisible color
     borderRadius: 2,
     width: "110%",
     top: -2,
@@ -74,7 +74,52 @@ export const styleShoppingCartHeader = new StyleSheet.create({
   asistantsTextInput: {},
 });
 
-export const styleShoppingCartBody = new StyleSheet.create({});
+export const styleShoppingCartBody = new StyleSheet.create({
+  container: {
+    borderWidth: 0,
+    width: "100%",
+    backgroundColor: "#fff",
+  },
+  footerContainer: {
+    borderWidth: 0,
+    alignItems: "center",
+    marginTop: 10,
+    marginBottom: 10,
+  },
+  footerRow: {
+    flexDirection: "row",
+    borderWidth: 0,
+    width: "80%",
+    justifyContent: "space-between",
+    marginBottom: 5,
+  },
+  footerTitle: {
+    fontFamily: "Spartan-Bold",
+    fontSize: 18,
+    color: globalStyle.globalFontColor,
+  },
+  footerValue: {
+    fontFamily: "Spartan-Medium",
+    fontSize: 20,
+    color: globalStyle.globalFontColor,
+  },
+  footerControls: {
+    borderWidth: 0,
+    justifyContent: "space-around",
+    height: 150,
+  },
+  messageCart: {
+    marginTop: 80,
+    borderWidth: 0,
+    width: "80%",
+  },
+  messageCartText: {
+    fontFamily: "Spartan-Medium",
+    fontSize: 20,
+    color: globalStyle.globalFontColor,
+    textAlign: "center",
+  },
+});
 
 export const styles = new StyleSheet.create({
   cartIcon: {

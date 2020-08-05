@@ -1,3 +1,69 @@
 import { StyleSheet } from "react-native";
-
-export default () => new StyleSheet.create({});
+import { globalStyle } from "../../styles";
+export const styles = new StyleSheet.create({
+  container: {
+    position: "relative",
+    textAlign: "left",
+    borderWidth: 0,
+    width: "90%",
+    flexDirection: "row",
+    marginBottom: 10,
+    marginTop: 5,
+    paddingTop: 5,
+    paddingRight: 5,
+    paddingBottom: 5,
+    paddingLeft: 15,
+    backgroundColor: globalStyle.globalBackgroundColorCart,
+    borderTopRightRadius: 15,
+  },
+  trashContent: {
+    backgroundColor: globalStyle.globalFontColor,
+    position: "absolute",
+    paddingTop: 8,
+    paddingBottom: 8,
+    paddingLeft: 10,
+    paddingRight: 10,
+    borderRadius: 20,
+    zIndex: 100,
+    right: -15,
+    top: 34,
+  },
+  infoProduct: {
+    borderWidth: 0,
+    flex: 1,
+    marginRight: 25,
+    alignItems: "center",
+    padding: 3,
+  },
+  titleProduct: {
+    fontFamily: "Spartan-Bold",
+    color: globalStyle.globalFontColor,
+    margin: 5,
+  },
+  detailProduct: {
+    flexDirection: "row",
+    borderWidth: 0,
+    alignSelf: "flex-start",
+    width: "100%",
+    justifyContent: "space-between",
+    padding: 2,
+  },
+  subtitleProduct: {
+    fontFamily: "Spartan-Medium",
+    color: globalStyle.globalFontColor,
+    fontSize: 12,
+    marginRight: 5,
+  },
+  valueProduct: {
+    fontFamily: "Spartan-Medium",
+    color: globalStyle.globalFontColor,
+    fontSize: 12,
+  },
+  imageProduct: {
+    borderWidth: 0,
+    alignItems: "center",
+    marginTop: "auto",
+    marginBottom: "auto",
+    marginRight: 5,
+  },
+});
