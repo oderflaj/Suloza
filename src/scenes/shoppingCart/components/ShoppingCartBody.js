@@ -1,5 +1,5 @@
 import React from "react";
-import { View, Text, ScrollView } from "react-native";
+import { View, Text, ScrollView, Alert } from "react-native";
 import { styleShoppingCartBody } from "../style";
 import CardProduct from "../../../components/cardProduct/components/CardProduct";
 import Button from "../../../components/button/componets/Button";
@@ -11,6 +11,27 @@ export default ({ guesses, quantity, cart, actions }) => {
   cart.forEach((product) => {
     money += product.price * product.units;
   });
+
+  const ClearCart = () => {
+    Alert.alert(
+      "Confirmación",
+      "¿Desea limpiar la selección de piezas?",
+      [
+        {
+          text: "Cancelar",
+          onPress: () => console.log("Cancel Pressed"),
+          style: "cancel",
+        },
+        {
+          text: "OK",
+          onPress: () => {
+            cart.forEach((product) => actions.removeProduct(product.id));
+          },
+        },
+      ],
+      { cancelable: false }
+    );
+  };
 
   return quantity == 0 || guesses == 0 ? (
     <View style={styleShoppingCartBody.messageCart}>
@@ -49,7 +70,11 @@ export default ({ guesses, quantity, cart, actions }) => {
               color={globalStyle.globalFontColorButton}
             />
           </Button>
-          <Button title={"Limpiar"} backgroundColor={"red"}>
+          <Button
+            title={"Limpiar"}
+            backgroundColor={"red"}
+            onPress={() => ClearCart()}
+          >
             <FontAwesome
               name="trash-o"
               size={24}

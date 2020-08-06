@@ -35,7 +35,7 @@ export default function shoppingCart(state = initialState, action) {
         amount: calcAmount(state.cart) * action.guesses,
       };
     case Actions.ADD_PRODUCT:
-      action.product["units"] = state.cart.length * state.guesses;
+      action.product["units"] = state.guesses;
       state.cart.push(action.product);
       return {
         ...state,
@@ -63,6 +63,11 @@ export default function shoppingCart(state = initialState, action) {
       return {
         ...state,
         turnOnOffShoppingCart: !state.turnOnOffShoppingCart,
+      };
+    case Actions.CLEAR_CART:
+      return {
+        ...state,
+        cart: ![],
       };
 
     default:

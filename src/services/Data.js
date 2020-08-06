@@ -274,7 +274,7 @@ export const tableCatalog = [
 ];
 
 export const userInformation = {
-  name: "Invitado",
+  name: "José Alfredo Carbajal Santillán",
   email: "",
   telephone: "",
   logged: false,

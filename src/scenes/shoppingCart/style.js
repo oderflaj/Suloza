@@ -60,6 +60,8 @@ export const styleShoppingCartHeader = new StyleSheet.create({
     color: globalStyle.globalFontColor,
     marginBottom: 10,
     fontSize: 16,
+    borderWidth: 0,
+    textAlign: "center",
   },
   asistantsContainer: {
     borderWidth: 0,

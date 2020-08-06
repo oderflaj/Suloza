@@ -3,6 +3,7 @@ export const ADD_PRODUCT = "ADD_PRODUCT";
 export const REMOVE_PRODUCT = "REMOVE_PRODUCT";
 export const TURN_PRODUCT_TABLE = "TOGGLE_PRODUCT_TABLE";
 export const TRUNONOFF_SHOPPINGCART = "TRUNONOFF_SHOPPINGCART";
+export const CLEAR_CART = "CLEAR_CART";
 
 export const setGuess = (guesses) => {
   //console.log(guesses)
@@ -34,4 +35,10 @@ export const turnProductTableReset = (turnProductTable) => {
 //TURN OFF/ON the flag of the SHOPPING CART FORM
 export const turnOnOffShoppingCart = () => {
   return { type: TRUNONOFF_SHOPPINGCART };
+};
+
+export const clearCart = () => {
+  return {
+    type: CLEAR_CART,
+  };
 };

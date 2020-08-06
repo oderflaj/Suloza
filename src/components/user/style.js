@@ -10,7 +10,7 @@ export const styles = new StyleSheet.create({
   nameUser: {
     fontSize: 16,
     padding: 10,
-    fontFamily: "Spartan-Medium",
+    fontFamily: "Spartan-Bold",
     color: globalStyle.globalFontColor,
   },
 });

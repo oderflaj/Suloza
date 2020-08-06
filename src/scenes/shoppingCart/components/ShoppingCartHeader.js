@@ -4,6 +4,7 @@ import { styleShoppingCartHeader } from "../style";
 import { Feather } from "@expo/vector-icons";
 import { globalStyle } from "../../../styles";
 import Guess from "../../../stores/ShoppingCartContainers/Guess";
+import { userInformation } from "../../../services/Data";
 
 export default () => {
   return (
@@ -13,18 +14,9 @@ export default () => {
       </View>
       <View style={styleShoppingCartHeader.infoBase}>
         <Text style={styleShoppingCartHeader.infoBaseText}>
-          Jose Manuel Alcantara Ibarra de la Loza
+          {userInformation.name}
         </Text>
         <View style={styleShoppingCartHeader.asistantsContainer}>
-          {/*<Text
-            style={[
-              styleShoppingCartHeader.infoBaseText,
-              styleShoppingCartHeader.asistantsText,
-            ]}
-          >
-            Asistentes
-          </Text>
-          <TextInput />*/}
           <Guess />
         </View>
       </View>
