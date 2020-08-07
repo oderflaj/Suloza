@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { View, Text, TextInput, TouchableNativeFeedback } from "react-native";
+import { View, Text, TextInput, TouchableOpacity } from "react-native";
 import { styles } from "../styles";
 import { FontAwesome5 } from "@expo/vector-icons";
 import { globalStyle } from "../../../styles";
@@ -46,7 +46,7 @@ export default ({ guesses, turnOnOff, actions }) => {
     <View style={styles.container}>
       <Text style={styles.guessText}>Asistentes&nbsp;&nbsp;</Text>
       <View style={styles.buttonGuess}>
-        <TouchableNativeFeedback
+        <TouchableOpacity
           onPress={() => {
             setGuessCount(setFormat((parseInt(guessCount) + 1).toString()));
             actions.setGuess(setFormat((parseInt(guessCount) + 1).toString()));
@@ -59,7 +59,7 @@ export default ({ guesses, turnOnOff, actions }) => {
               color={globalStyle.globalFontColor}
             />
           </View>
-        </TouchableNativeFeedback>
+        </TouchableOpacity>
       </View>
       <TextInput
         style={styles.guessTextInput}
@@ -74,7 +74,7 @@ export default ({ guesses, turnOnOff, actions }) => {
         onEndEditing={() => actions.setGuess(guessCount)}
       />
       <View style={styles.buttonGuess}>
-        <TouchableNativeFeedback
+        <TouchableOpacity
           onPress={() => {
             setGuessCount(setFormat((parseInt(guessCount) - 1).toString()));
             actions.setGuess(setFormat((parseInt(guessCount) - 1).toString()));
@@ -87,7 +87,7 @@ export default ({ guesses, turnOnOff, actions }) => {
               color={globalStyle.globalFontColor}
             />
           </View>
-        </TouchableNativeFeedback>
+        </TouchableOpacity>
       </View>
     </View>
   );

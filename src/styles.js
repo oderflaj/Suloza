@@ -6,6 +6,9 @@ export const globalStyle = {
   globalFontColorOdd: "rgb(146, 185, 185)",
   globalBackgroundColor: "rgb(215, 233, 233)",
   globalBackgroundColorCart: "rgba(146, 185, 185, 0.6)",
+  statusBar: {
+    backgroundColor: "rgba(174, 203, 203, 0.9)",
+  }
 };
 
 export const styles = StyleSheet.create({

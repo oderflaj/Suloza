@@ -81,5 +81,6 @@ export const stylesContent = StyleSheet.create({
     position: "absolute",
     right: 13,
     top: 13,
+    zIndex:100,
   },
 });
