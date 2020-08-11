@@ -5,6 +5,7 @@ import CardProduct from "../../../components/cardProduct/components/CardProduct"
 import Button from "../../../components/button/componets/Button";
 import { Octicons, FontAwesome } from "@expo/vector-icons";
 import { globalStyle } from "../../../styles";
+import Openpay, { createDeviceSessionId } from "openpay-react-native";
 
 export default ({ guesses, quantity, cart, actions }) => {
   let money = 0;
@@ -33,6 +34,47 @@ export default ({ guesses, quantity, cart, actions }) => {
     );
   };
 
+  React.useEffect(() => {
+    /*
+  OpenPay.setId('mwyl4lr7mwshaa8eutfn');
+  ​OpenPay.setApiKey('pk_fcf8f304e15e4e0fb686941235e3ce2c');
+  OpenPay.setSandboxMode(true);
+  console.log("Obtiene modo SandBox")
+  console.log(OpenPay.getSandboxMode())
+*/
+  });
+
+  const [loading, setLoading] = React.useState(false);
+  const [token, setToken] = React.useState("");
+
+  const successToken = (response) => {
+    console.log(response);
+    const deviceSessionId = createDeviceSessionId();
+    const token = response.id;
+
+    console.log(deviceSessionId);
+    console.log(token);
+    setToken(`Token: ${token}`);
+    setLoading(false);
+
+    // Make the call to your server with your charge request
+  };
+
+  const failToken = (response) => {
+    console.log("failToken", response);
+  };
+
+  /*
+  const address = {
+    city: "Querétaro",
+    country_code: "MX",
+    postal_code: "76900",
+    line1: "Av 5 de Febrero",
+    line2: "Roble 207",
+    line3: "Col Carrillo",
+    state: "Queretaro",
+  };
+  */
   return quantity == 0 || guesses == 0 ? (
     <View style={styleShoppingCartBody.messageCart}>
       <Text style={styleShoppingCartBody.messageCartText}>
@@ -61,7 +103,16 @@ export default ({ guesses, quantity, cart, actions }) => {
               .replace(/\d(?=(\d{3})+\.)/g, "$&,")}`}
           </Text>
         </View>
-
+        <Openpay
+          isProductionMode={false}
+          merchantId="mwyl4lr7mwshaa8eutfn"
+          publicKey="pk_fcf8f304e15e4e0fb686941235e3ce2c"
+          //address={address}
+          successToken={successToken}
+          failToken={failToken}
+          loading={loading}
+        />
+        <Text>{token}</Text>
         <View style={styleShoppingCartBody.footerControls}>
           <Button title={"Solicitar"}>
             <Octicons
