@@ -1,5 +1,12 @@
 import React from "react";
-import { View, Modal, TouchableWithoutFeedback, StatusBar, Platform,NativeModules  } from "react-native";
+import {
+  View,
+  Modal,
+  TouchableWithoutFeedback,
+  StatusBar,
+  Platform,
+  NativeModules,
+} from "react-native";
 import { styleShoppingCart } from "./style";
 import ShoppingCartHeader from "./components/ShoppingCartHeader";
 import ShoppingCartBody from "../../stores/ShoppingCartContainers/ShoppingCartBody";
@@ -22,7 +29,10 @@ export default ({ turnOnOffShoppingCart, actions }) => {
       StatusBarManager.getHeight((response) =>
         setStatusBarHeight(response.height)
       );
-    }})
+    } else {
+      setStatusBarHeight(0);
+    }
+  });
 
   return (
     <Modal
@@ -30,7 +40,7 @@ export default ({ turnOnOffShoppingCart, actions }) => {
       transparent={false}
       visible={turnOnOffShoppingCart}
     >
-    <View style={[globalStyle.statusBar, { height: statusBarHeight }]}></View>
+      <View style={[globalStyle.statusBar, { height: statusBarHeight }]}></View>
       <View style={styleShoppingCart.content}>
         <View style={styleShoppingCart.closeButton}>
           <TouchableWithoutFeedback

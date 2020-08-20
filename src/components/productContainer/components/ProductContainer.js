@@ -1,12 +1,13 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { View, Text, TouchableOpacity } from "react-native";
 import ImageProduct from "../../imageProduct/components/ImageProduct";
 import { imagesMenu } from "../../../services/Images";
-import { nameItemMenu, productCatalog } from "../../../services/Data";
+import { nameItemMenu } from "../../../services/Data";
 import { globalStyle } from "../../../styles";
 import { styles } from "../style";
 
-export default ({ category, actions }) => {
+export default ({ productCatalog, actions }) => {
+  console.log(productCatalog);
   function setProductCategory(categorySelected) {
     let categoryOne = productCatalog.filter(
       (product) => product.category === categorySelected

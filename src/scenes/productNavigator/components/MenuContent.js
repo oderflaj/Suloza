@@ -1,5 +1,12 @@
 import React from "react";
-import { View, TouchableWithoutFeedback, Modal, StatusBar, Platform,NativeModules } from "react-native";
+import {
+  View,
+  TouchableWithoutFeedback,
+  Modal,
+  StatusBar,
+  Platform,
+  NativeModules,
+} from "react-native";
 import Guess from "../../../stores/ShoppingCartContainers/Guess";
 import User from "../../../components/user/components/User";
 import ProductContainer from "../../../stores/ProductNavigationContainers/ProductContainer";
@@ -22,10 +29,13 @@ export default ({ turnOnOff, actions }) => {
       StatusBarManager.getHeight((response) =>
         setStatusBarHeight(response.height)
       );
-    }})
+    } else {
+      setStatusBarHeight(0);
+    }
+  });
   return (
     <Modal animationType="slide" transparent={true} visible={turnOnOff}>
-   <View style={[globalStyle.statusBar, { height: statusBarHeight }]}></View>
+      <View style={[globalStyle.statusBar, { height: statusBarHeight }]}></View>
       <View style={stylesContent.content}>
         <View style={stylesContent.closeMenuContent}>
           <TouchableWithoutFeedback onPress={actions.toggleProductMenu}>

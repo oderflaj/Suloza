@@ -1,6 +1,7 @@
 export const TOGGLE_PRODUCT_MENU = "TOGGLE_PRODUCT_MENU";
 export const TOGGLE_RESET_CAROUSEL = "TOGGLE_RESET_CAROUSEL";
 export const SET_PRODUCT_CATEGORY = "SET_PRODUCT_CATEGORY";
+export const SET_PRODUCT_CATALOG = "SET_PRODUCT_CATALOG";
 
 export function toggleProductMenu() {
   return { type: TOGGLE_PRODUCT_MENU };
@@ -17,4 +18,8 @@ export const setProductCategory = (category) => {
 //TURN OFF/ON the initialization of the carousel
 export const toggleReseCarousel = () => {
   return { type: TOGGLE_RESET_CAROUSEL };
+};
+
+export const setProductCatalog = (productCatalog) => {
+  return { type: SET_PRODUCT_CATALOG, productCatalog };
 };

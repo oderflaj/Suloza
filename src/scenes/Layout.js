@@ -10,8 +10,39 @@ import { store, persistor } from "../stores/GlobalContainer/Global";
 import { Provider } from "react-redux";
 import * as Font from "expo-font";
 import AppLoading from "../components/appLoading/components/AppLoading";
-//import { LocalStorage, SaveSession } from "../services/Function";
+import { LocalStorage } from "../services/Function";
 import { PersistGate } from "redux-persist/integration/react";
+import * as Facebook from "expo-facebook";
+
+async function logIn() {
+  try {
+    await Facebook.initializeAsync("634586767223460");
+    const {
+      type,
+      token,
+      expires,
+      permissions,
+      declinedPermissions,
+    } = await Facebook.logInWithReadPermissionsAsync({
+      permissions: ["public_profile"],
+    });
+    console.log("Type----");
+    console.log(type);
+
+    if (type === "success") {
+      console.log(token);
+      // Get the user's name using Facebook's Graph API
+      const response = await fetch(
+        `https://graph.facebook.com/me?access_token=${token}`
+      );
+      Alert.alert("Logged in!", `Hi ${(await response.json()).name}!`);
+    } else {
+      // type === 'cancel'
+    }
+  } catch ({ message }) {
+    alert(`Facebook Login Error: ${message}`);
+  }
+}
 
 const Layout = () => {
   const { StatusBarManager } = NativeModules;
@@ -20,11 +51,12 @@ const Layout = () => {
   );
 
   const [fontsLoaded, setFontsLoaded] = useState(false);
+  const [initialDataFlag, setInitialDataFlag] = useState(false);
 
   useEffect(() => {
     //statusBarHeight
     //StatusBar.currentHeight
-    //await LocalStorage.InitializeSuloza();
+
     //SaveSession();
 
     if (Platform.OS === "ios") {
@@ -35,7 +67,12 @@ const Layout = () => {
     if (!fontsLoaded) {
       loadFonts();
     }
-  });
+    if (!initialDataFlag) {
+      LocalStorage.InitializeSuloza().then((response) =>
+        setInitialDataFlag(response)
+      );
+    }
+  }, []);
 
   const loadFonts = async () => {
     await Font.loadAsync({
@@ -47,7 +84,8 @@ const Layout = () => {
     setFontsLoaded(true);
   };
 
-  if (fontsLoaded) {
+  if (fontsLoaded && initialDataFlag) {
+    //logIn();
     return (
       <View style={styles.layoutContent}>
         <MenuContent />

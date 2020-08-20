@@ -46,6 +46,7 @@ export default ({ guesses, quantity, cart, actions }) => {
 
   const [loading, setLoading] = React.useState(false);
   const [token, setToken] = React.useState("");
+  const [deviceSessionId, setDeviceSessionId] = React.useState("");
 
   const successToken = (response) => {
     console.log(response);
@@ -55,6 +56,7 @@ export default ({ guesses, quantity, cart, actions }) => {
     console.log(deviceSessionId);
     console.log(token);
     setToken(`Token: ${token}`);
+    setDeviceSessionId(`DeviceSessionId: ${deviceSessionId}`);
     setLoading(false);
 
     // Make the call to your server with your charge request
@@ -113,6 +115,7 @@ export default ({ guesses, quantity, cart, actions }) => {
           loading={loading}
         />
         <Text>{token}</Text>
+        <Text>{deviceSessionId}</Text>
         <View style={styleShoppingCartBody.footerControls}>
           <Button title={"Solicitar"}>
             <Octicons

@@ -1,5 +1,12 @@
 import { imageProduct, imageTable, imageProductToTable } from "./Images";
 
+export const SULOZA = {
+  GET_CATALOG: "https://sulozaapi.azurewebsites.net/api/Products/catalog",
+  POST_REGISTER: "https://sulozaapi.azurewebsites.net/api/Account/Register",
+  POST_LOGIN: "https://sulozaapi.azurewebsites.net/api/Account/Login",
+  POST_SHOPPINGCART: "https://sulozaapi.azurewebsites.net/api/Email/Send",
+};
+
 export const nameItemMenu = {
   cup1: "Copas",
   cupCoffee1: "Tazas",
@@ -65,7 +72,7 @@ export const productCatalog = [
         imageToTable: imageProductToTable.dish7,
         ImageToTableWidth: 120,
         ImageToTableHeight: 120,
-        price: "40",
+        price: "4",
       },
     ],
   },
@@ -83,7 +90,7 @@ export const productCatalog = [
         price: "11",
       },
       {
-        id: 8,
+        id: 20,
         name: "Copa 2",
         image: imageProduct.cup2,
         imageToTable: imageProductToTable.cup2,
@@ -92,7 +99,7 @@ export const productCatalog = [
         price: "22",
       },
       {
-        id: 9,
+        id: 8,
         name: "Copa 3",
         image: imageProduct.cup3,
         imageToTable: imageProductToTable.cup3,
@@ -101,7 +108,7 @@ export const productCatalog = [
         price: "33",
       },
       {
-        id: 10,
+        id: 9,
         name: "Copa 4",
         image: imageProduct.cup4,
         imageToTable: imageProductToTable.cup4,
@@ -110,7 +117,7 @@ export const productCatalog = [
         price: "44",
       },
       {
-        id: 11,
+        id: 10,
         name: "Copa 5",
         image: imageProduct.cup5,
         imageToTable: imageProductToTable.cup5,
@@ -125,7 +132,7 @@ export const productCatalog = [
     name: "Tazas",
     products: [
       {
-        id: 12,
+        id: 11,
         name: "Taza 1",
         image: imageProduct.cupCoffee1,
         imageToTable: imageProductToTable.cupCoffee1,
@@ -134,7 +141,7 @@ export const productCatalog = [
         price: "12",
       },
       {
-        id: 13,
+        id: 12,
         name: "Taza 2",
         image: imageProduct.cupCoffee2,
         imageToTable: imageProductToTable.cupCoffee2,
@@ -149,7 +156,7 @@ export const productCatalog = [
     name: "Cubiertos",
     products: [
       {
-        id: 14,
+        id: 13,
         name: "Cubierto 1",
         image: imageProduct.cutlery1,
         imageToTable: imageProductToTable.cutlery1,
@@ -164,7 +171,7 @@ export const productCatalog = [
     name: "Vasos",
     products: [
       {
-        id: 15,
+        id: 14,
         name: "Vaso 1",
         image: imageProduct.glass1,
         imageToTable: imageProductToTable.glass1,
@@ -173,7 +180,7 @@ export const productCatalog = [
         price: "8",
       },
       {
-        id: 16,
+        id: 15,
         name: "Vaso 2",
         image: imageProduct.glass2,
         imageToTable: imageProductToTable.glass2,
@@ -182,7 +189,7 @@ export const productCatalog = [
         price: "9",
       },
       {
-        id: 17,
+        id: 16,
         name: "Vaso 3",
         image: imageProduct.glass3,
         imageToTable: imageProductToTable.glass3,
@@ -191,7 +198,7 @@ export const productCatalog = [
         price: "10",
       },
       {
-        id: 18,
+        id: 17,
         name: "Vaso 4",
         image: imageProduct.glass4,
         imageToTable: imageProductToTable.glass4,
@@ -200,7 +207,7 @@ export const productCatalog = [
         price: "11",
       },
       {
-        id: 19,
+        id: 18,
         name: "Vaso 5",
         image: imageProduct.glass5,
         imageToTable: imageProductToTable.glass5,
@@ -209,13 +216,13 @@ export const productCatalog = [
         price: "12",
       },
       {
-        id: 20,
+        id: 19,
         name: "Vaso 6",
         image: imageProduct.glass6,
         imageToTable: imageProductToTable.glass6,
         ImageToTableWidth: 80,
         ImageToTableHeight: 80,
-        price: "13",
+        price: "1",
       },
     ],
   },

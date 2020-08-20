@@ -7,6 +7,7 @@ const initialState = {
   cart: [],
   turnProductTable: false,
   turnOnOffShoppingCart: false,
+  statusShoppingCart: "open", //open,pending,closed
 };
 
 //Carculo del monto del carrito de compra
@@ -64,11 +65,15 @@ export default function shoppingCart(state = initialState, action) {
         ...state,
         turnOnOffShoppingCart: !state.turnOnOffShoppingCart,
       };
+
     case Actions.CLEAR_CART:
       return {
         ...state,
-        cart: ![],
+        cart: [],
       };
+
+    case Actions.SET_STATUS_CART:
+      return { ...state, statusShoppingCart: action.statusShoppingCart };
 
     default:
       return state;
