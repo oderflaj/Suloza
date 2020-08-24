@@ -1,0 +1,3 @@
+[0823/170631.338:ERROR:process_reader_win.cc(155)] SuspendThread: Acceso denegado. (0x5)
+[0823/170631.344:ERROR:process_reader_win.cc(127)] NtOpenThread: {Acceso denegado} Un proceso ha solicitado acceso a un objeto, pero no se le han concedido esos derechos de acceso. (0xc0000022)
+[0823/170631.391:ERROR:exception_snapshot_win.cc(99)] thread ID 11860 not found in process

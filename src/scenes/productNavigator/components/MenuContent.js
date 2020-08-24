@@ -8,7 +8,8 @@ import {
   NativeModules,
 } from "react-native";
 import Guess from "../../../stores/ShoppingCartContainers/Guess";
-import User from "../../../components/user/components/User";
+//import User from "../../../components/user/components/User";
+import User from "../../../stores/ProductNavigationContainers/UserContainer";
 import ProductContainer from "../../../stores/ProductNavigationContainers/ProductContainer";
 import { Ionicons } from "@expo/vector-icons";
 import { globalStyle } from "../../../styles";
@@ -34,7 +35,12 @@ export default ({ turnOnOff, actions }) => {
     }
   });
   return (
-    <Modal animationType="slide" transparent={true} visible={turnOnOff}>
+    <Modal
+      animationType="slide"
+      transparent={true}
+      visible={turnOnOff}
+      onRequestClose={() => actions.toggleProductMenu()}
+    >
       <View style={[globalStyle.statusBar, { height: statusBarHeight }]}></View>
       <View style={stylesContent.content}>
         <View style={stylesContent.closeMenuContent}>

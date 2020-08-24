@@ -23,6 +23,7 @@
     "description": "Catalog application to créate configurations of products for dinner and another events that use dishes, glasses, cups, etc",
     "facebookScheme": "fb634586767223460",
     "facebookAppId": "634586767223460",
+    "facebookDisplayName": "Suloza",
     "android": {
       "package": "com.oderflaj.Suloza",
       "versionCode": 1

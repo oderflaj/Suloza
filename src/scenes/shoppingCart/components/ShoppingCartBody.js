@@ -5,10 +5,17 @@ import CardProduct from "../../../components/cardProduct/components/CardProduct"
 import Button from "../../../components/button/componets/Button";
 import { Octicons, FontAwesome } from "@expo/vector-icons";
 import { globalStyle } from "../../../styles";
-import Openpay, { createDeviceSessionId } from "openpay-react-native";
+import ShoppingCartPayment from "../../shoppingCartPayment/components/ShoppingCartPayment";
+import UserInformation from "../../userInformation/components/UserInformation";
 
-export default ({ guesses, quantity, cart, actions }) => {
+export default ({ guesses, quantity, cart, userInformation, actions }) => {
   let money = 0;
+
+  const [activeOpenPay, setActiveOpenPay] = React.useState(false);
+  const [
+    openUserInformationModal,
+    setOpenUserInformationModal,
+  ] = React.useState(false);
   cart.forEach((product) => {
     money += product.price * product.units;
   });
@@ -16,7 +23,7 @@ export default ({ guesses, quantity, cart, actions }) => {
   const ClearCart = () => {
     Alert.alert(
       "Confirmación",
-      "¿Desea limpiar la selección de piezas?",
+      "¿Desea limpiar la selección de productos?",
       [
         {
           text: "Cancelar",
@@ -44,39 +51,18 @@ export default ({ guesses, quantity, cart, actions }) => {
 */
   });
 
-  const [loading, setLoading] = React.useState(false);
-  const [token, setToken] = React.useState("");
-  const [deviceSessionId, setDeviceSessionId] = React.useState("");
-
-  const successToken = (response) => {
-    console.log(response);
-    const deviceSessionId = createDeviceSessionId();
-    const token = response.id;
-
-    console.log(deviceSessionId);
-    console.log(token);
-    setToken(`Token: ${token}`);
-    setDeviceSessionId(`DeviceSessionId: ${deviceSessionId}`);
-    setLoading(false);
-
-    // Make the call to your server with your charge request
+  const closeUserInformation = () => {
+    setOpenUserInformationModal(false);
   };
 
-  const failToken = (response) => {
-    console.log("failToken", response);
+  const validUserInformation = () => {
+    if (Object.keys(userInformation).length == 0) {
+      setOpenUserInformationModal(true);
+    } else {
+      setActiveOpenPay(true);
+    }
   };
 
-  /*
-  const address = {
-    city: "Querétaro",
-    country_code: "MX",
-    postal_code: "76900",
-    line1: "Av 5 de Febrero",
-    line2: "Roble 207",
-    line3: "Col Carrillo",
-    state: "Queretaro",
-  };
-  */
   return quantity == 0 || guesses == 0 ? (
     <View style={styleShoppingCartBody.messageCart}>
       <Text style={styleShoppingCartBody.messageCartText}>
@@ -85,6 +71,9 @@ export default ({ guesses, quantity, cart, actions }) => {
     </View>
   ) : (
     <ScrollView style={styleShoppingCartBody.container}>
+      {openUserInformationModal && (
+        <UserInformation closeUserInformation={closeUserInformation} />
+      )}
       {cart.map((product) => (
         <CardProduct key={product.id} product={product} actions={actions} />
       ))}
@@ -105,25 +94,18 @@ export default ({ guesses, quantity, cart, actions }) => {
               .replace(/\d(?=(\d{3})+\.)/g, "$&,")}`}
           </Text>
         </View>
-        <Openpay
-          isProductionMode={false}
-          merchantId="mwyl4lr7mwshaa8eutfn"
-          publicKey="pk_fcf8f304e15e4e0fb686941235e3ce2c"
-          //address={address}
-          successToken={successToken}
-          failToken={failToken}
-          loading={loading}
-        />
-        <Text>{token}</Text>
-        <Text>{deviceSessionId}</Text>
+        {activeOpenPay && <ShoppingCartPayment />}
+
         <View style={styleShoppingCartBody.footerControls}>
-          <Button title={"Solicitar"}>
-            <Octicons
-              name="tasklist"
-              size={24}
-              color={globalStyle.globalFontColorButton}
-            />
-          </Button>
+          {!activeOpenPay && (
+            <Button title={"Solicitar"} onPress={() => validUserInformation()}>
+              <Octicons
+                name="tasklist"
+                size={24}
+                color={globalStyle.globalFontColorButton}
+              />
+            </Button>
+          )}
           <Button
             title={"Limpiar"}
             backgroundColor={"red"}

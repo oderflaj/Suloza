@@ -8,7 +8,7 @@ import {
   NativeModules,
 } from "react-native";
 import { styleShoppingCart } from "./style";
-import ShoppingCartHeader from "./components/ShoppingCartHeader";
+import ShoppingCartHeader from "../../stores/ShoppingCartContainers/ShoppingCartHeader";
 import ShoppingCartBody from "../../stores/ShoppingCartContainers/ShoppingCartBody";
 import { globalStyle } from "../../styles";
 import { Ionicons } from "@expo/vector-icons";
@@ -39,6 +39,7 @@ export default ({ turnOnOffShoppingCart, actions }) => {
       animationType="slide"
       transparent={false}
       visible={turnOnOffShoppingCart}
+      onRequestClose={() => actions.turnOnOffShoppingCart()}
     >
       <View style={[globalStyle.statusBar, { height: statusBarHeight }]}></View>
       <View style={styleShoppingCart.content}>

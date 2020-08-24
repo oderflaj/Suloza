@@ -1,4 +1,9 @@
 import { imageProduct, imageTable, imageProductToTable } from "./Images";
+import { AsyncStorage } from "react-native";
+import * as Facebook from "expo-facebook";
+import { setUserInformation } from "../stores/ShoppingCart/actions";
+import { store } from "../stores/GlobalContainer/Global";
+import axios from "axios";
 
 export const SULOZA = {
   GET_CATALOG: "https://sulozaapi.azurewebsites.net/api/Products/catalog",
@@ -286,4 +291,86 @@ export const userInformation = {
   telephone: "",
   logged: false,
   orderStatus: "N/A",
+};
+
+export async function FacebookLogIn() {
+  const facebookId = "634586767223460";
+  try {
+    await Facebook.initializeAsync(facebookId);
+
+    const {
+      type,
+      token,
+      expires,
+      permissions,
+      declinedPermissions,
+    } = await Facebook.logInWithReadPermissionsAsync(facebookId, {
+      permissions: ["public_profile"],
+    });
+    console.log("Type----");
+    console.log(type);
+
+    if (type === "success") {
+      // Get the user's name using Facebook's Graph API
+      const response = await fetch(
+        `https://graph.facebook.com/me?access_token=${token}`
+      );
+      //alert("Logged in!", `Hi ${(await response.json()).name}!`);
+      let result = await response.json();
+
+      console.log(result);
+
+      result["token"] = token;
+
+      if (typeof result.email == "undefined") {
+        result["email"] = "email@dummy.com";
+      }
+
+      if (typeof result.phoneNumber == "undefined") {
+        result["phoneNumber"] = "00000000";
+      }
+
+      let userInfo = {
+        name: result.name,
+        email: result.email,
+        phoneNumber: result.phoneNumber,
+        externalToken: result.token,
+        password: "abcd1234",
+        image: "",
+        isExternal: true,
+      };
+      console.log(result);
+      await AsyncStorage.setItem("userInformation", JSON.stringify(userInfo));
+      await store.dispatch(setUserInformation(userInfo));
+      return true;
+    } else {
+      // type === 'cancel'
+      return false;
+    }
+  } catch ({ message }) {
+    alert(`Facebook Login Error: ${message}`);
+    return false;
+  }
+}
+
+export const Register = async (userInformation) => {
+  try {
+    await axios
+      .post(SULOZA.POST_REGISTER, userInformation)
+      .then(async (response) => {
+        let result = await response.json();
+        if (result.statusResponse == "Ok") {
+          await AsyncStorage.setItem("userInformation", userInformation);
+          await store.dispatch(setUserInformation(userInformation));
+        }
+        return result;
+      });
+  } catch (error) {
+    alert(`Error al registrar su información: ${error}`);
+    return {
+      statusResponse: "error",
+      message: `Error al registrar: ${error}`,
+      result: false,
+    };
+  }
 };

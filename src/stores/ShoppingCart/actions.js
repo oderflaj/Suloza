@@ -5,6 +5,7 @@ export const TURN_PRODUCT_TABLE = "TOGGLE_PRODUCT_TABLE";
 export const TRUNONOFF_SHOPPINGCART = "TRUNONOFF_SHOPPINGCART";
 export const CLEAR_CART = "CLEAR_CART";
 export const SET_STATUS_CART = "SET_STATUS_CART";
+export const SET_USER_INFORMATION = "SET_USER_INFORMATION";
 
 export const setGuess = (guesses) => {
   //console.log(guesses)
@@ -48,5 +49,12 @@ export const setStatusCart = (statusShoppingCart) => {
   return {
     type: SET_STATUS_CART,
     statusShoppingCart,
+  };
+};
+
+export const setUserInformation = (userInformation) => {
+  return {
+    type: SET_USER_INFORMATION,
+    userInformation,
   };
 };

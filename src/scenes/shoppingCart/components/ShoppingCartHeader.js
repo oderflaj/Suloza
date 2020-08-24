@@ -6,7 +6,8 @@ import { globalStyle } from "../../../styles";
 import Guess from "../../../stores/ShoppingCartContainers/Guess";
 import { userInformation } from "../../../services/Data";
 
-export default () => {
+export default ({ userInformation }) => {
+  console.log(userInformation);
   return (
     <View style={styleShoppingCartHeader.content}>
       <View style={styleShoppingCartHeader.userImage}>
@@ -14,7 +15,9 @@ export default () => {
       </View>
       <View style={styleShoppingCartHeader.infoBase}>
         <Text style={styleShoppingCartHeader.infoBaseText}>
-          {userInformation.name}
+          {Object.keys(userInformation).length == 0
+            ? "Invitado"
+            : userInformation.name}
         </Text>
         <View style={styleShoppingCartHeader.asistantsContainer}>
           <Guess />
