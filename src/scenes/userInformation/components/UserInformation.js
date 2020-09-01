@@ -6,12 +6,15 @@ import {
   Text,
   ScrollView,
   ActivityIndicator,
+  Alert,
+  AsyncStorage,
 } from "react-native";
 import { styles } from "../style";
 import { globalStyle } from "../../../styles";
 import Button from "../../../components/button/componets/Button";
 import { FontAwesome } from "@expo/vector-icons";
-import { FacebookLogIn, Register } from "../../../services/Data";
+import { FacebookLogIn, Register } from "../Services";
+import { ValidateEmail, ValidatePhoneNumber } from "../../../services/Function";
 
 export default ({ closeUserInformation }) => {
   const [activityRegisterUser, setActivityRegisterUser] = useState(false);
@@ -19,8 +22,59 @@ export default ({ closeUserInformation }) => {
   const [formEmailValue, setFormEmailValue] = useState("");
   const [formPhoneValue, setFormPhoneValue] = useState("");
 
-  const RegisterUser = () => {
+  const RegisterUser = async () => {
     setActivityRegisterUser(true);
+    try {
+      let name = formNameValue.toUpperCase();
+      let email = formEmailValue.toLowerCase();
+      let phoneNumber = formPhoneValue;
+
+      if (name.length < 4) {
+        throw "Su nombre debe ser mayor de 4 dígitos.";
+      }
+
+      if (!ValidateEmail(email.toString())) {
+        throw "El email es invalido.";
+      }
+
+      if (!ValidatePhoneNumber(phoneNumber)) {
+        throw "El número telefónico es incorrecto.";
+      }
+
+      let userInformation = {
+        name,
+        email,
+        phoneNumber,
+        externalToken: "",
+        password: "ABCD1234",
+        image: "",
+        isExternal: false,
+      };
+
+      let result = await Register(userInformation);
+
+      if (
+        result.statusResponse != "Ok" &&
+        result.statusResponse != "Reactivated"
+      ) {
+        throw result.message;
+      }
+
+      closeUserInformation();
+    } catch (error) {
+      Alert.alert(
+        "Error al registrar su Información!",
+        error,
+        [
+          {
+            text: "Cerrar",
+            style: "cancel",
+          },
+        ],
+        { cancelable: true }
+      );
+    }
+    setActivityRegisterUser(false);
   };
 
   return (
@@ -74,7 +128,9 @@ export default ({ closeUserInformation }) => {
             <TextInput
               style={styles.formUserInfoTextInput}
               value={formNameValue}
-              onChangeText={(text) => setFormNameValue(text)}
+              onChangeText={(text) => {
+                setFormNameValue(text);
+              }}
             />
             <Text style={styles.formUserInfoText}>Email</Text>
             <TextInput

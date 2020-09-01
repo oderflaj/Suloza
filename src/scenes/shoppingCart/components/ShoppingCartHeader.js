@@ -7,7 +7,7 @@ import Guess from "../../../stores/ShoppingCartContainers/Guess";
 import { userInformation } from "../../../services/Data";
 
 export default ({ userInformation }) => {
-  console.log(userInformation);
+  //console.log(userInformation);
   return (
     <View style={styleShoppingCartHeader.content}>
       <View style={styleShoppingCartHeader.userImage}>

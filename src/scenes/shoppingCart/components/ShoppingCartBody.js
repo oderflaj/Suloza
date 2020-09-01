@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { View, Text, ScrollView, Alert } from "react-native";
 import { styleShoppingCartBody } from "../style";
 import CardProduct from "../../../components/cardProduct/components/CardProduct";
@@ -8,14 +8,25 @@ import { globalStyle } from "../../../styles";
 import ShoppingCartPayment from "../../shoppingCartPayment/components/ShoppingCartPayment";
 import UserInformation from "../../userInformation/components/UserInformation";
 
-export default ({ guesses, quantity, cart, userInformation, actions }) => {
+export default ({
+  guesses,
+  quantity,
+  cart,
+  userInformation,
+  order,
+  actions,
+}) => {
   let money = 0;
 
-  const [activeOpenPay, setActiveOpenPay] = React.useState(false);
+  const [activeOpenPay, setActiveOpenPay] = useState(false);
   const [
     openUserInformationModal,
     setOpenUserInformationModal,
   ] = React.useState(false);
+
+  const [showStatusOrder, setShowStatusOrder] = useState(false);
+
+  //Sum price X units
   cart.forEach((product) => {
     money += product.price * product.units;
   });
@@ -42,17 +53,19 @@ export default ({ guesses, quantity, cart, userInformation, actions }) => {
   };
 
   React.useEffect(() => {
-    /*
-  OpenPay.setId('mwyl4lr7mwshaa8eutfn');
-  ​OpenPay.setApiKey('pk_fcf8f304e15e4e0fb686941235e3ce2c');
-  OpenPay.setSandboxMode(true);
-  console.log("Obtiene modo SandBox")
-  console.log(OpenPay.getSandboxMode())
-*/
-  });
+    console.log(order);
+  }, []);
 
   const closeUserInformation = () => {
     setOpenUserInformationModal(false);
+  };
+
+  const closeShoppingCartPayment = () => {
+    setActiveOpenPay(false);
+  };
+
+  const showStatusOrderSection = (show) => {
+    setShowStatusOrder(show);
   };
 
   const validUserInformation = () => {
@@ -94,10 +107,22 @@ export default ({ guesses, quantity, cart, userInformation, actions }) => {
               .replace(/\d(?=(\d{3})+\.)/g, "$&,")}`}
           </Text>
         </View>
-        {activeOpenPay && <ShoppingCartPayment />}
-
-        <View style={styleShoppingCartBody.footerControls}>
-          {!activeOpenPay && (
+        {activeOpenPay && (
+          <ShoppingCartPayment
+            closeShoppingCartPayment={closeShoppingCartPayment}
+            showStatusOrder={showStatusOrderSection}
+            totalAmount={`${Number(money)
+              .toFixed(2)
+              .replace(/\d(?=(\d{3})+\.)/g, "$&,")}`}
+            cart={cart}
+          />
+        )}
+        {showStatusOrder ? (
+          <View>
+            <Text>STATUS ORDER</Text>
+          </View>
+        ) : (
+          <View style={styleShoppingCartBody.footerControls}>
             <Button title={"Solicitar"} onPress={() => validUserInformation()}>
               <Octicons
                 name="tasklist"
@@ -105,19 +130,20 @@ export default ({ guesses, quantity, cart, userInformation, actions }) => {
                 color={globalStyle.globalFontColorButton}
               />
             </Button>
-          )}
-          <Button
-            title={"Limpiar"}
-            backgroundColor={"red"}
-            onPress={() => ClearCart()}
-          >
-            <FontAwesome
-              name="trash-o"
-              size={24}
-              color={globalStyle.globalFontColorButton}
-            />
-          </Button>
-        </View>
+
+            <Button
+              title={"Limpiar"}
+              backgroundColor={"red"}
+              onPress={() => ClearCart()}
+            >
+              <FontAwesome
+                name="trash-o"
+                size={24}
+                color={globalStyle.globalFontColorButton}
+              />
+            </Button>
+          </View>
+        )}
       </View>
     </ScrollView>
   );

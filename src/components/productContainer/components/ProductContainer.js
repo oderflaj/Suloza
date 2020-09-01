@@ -7,7 +7,6 @@ import { globalStyle } from "../../../styles";
 import { styles } from "../style";
 
 export default ({ productCatalog, actions }) => {
-  console.log(productCatalog);
   function setProductCategory(categorySelected) {
     let categoryOne = productCatalog.filter(
       (product) => product.category === categorySelected

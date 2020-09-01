@@ -9,6 +9,7 @@ const mapStateToProps = (state) => {
     quantity: state.reducerShoppingCart.quantity,
     cart: state.reducerShoppingCart.cart,
     userInformation: state.reducerShoppingCart.userInformation,
+    order: state.reducerShoppingCart.order,
   };
 };
 const mapDispatchToProps = (dispatch) => ({

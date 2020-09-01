@@ -81,6 +81,11 @@ export const stylesContent = StyleSheet.create({
     position: "absolute",
     right: 13,
     top: 13,
-    zIndex:100,
+    zIndex: 100,
+  },
+  containerButton: {
+    width: "90%",
+    alignSelf: "center",
+    marginBottom: 10,
   },
 });

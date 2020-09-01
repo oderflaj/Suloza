@@ -8,6 +8,22 @@ import {
 } from "../stores/ProductNavigator/actions";
 import { setUserInformation } from "../stores/ShoppingCart/actions";
 
+export function ValidateEmail(mail) {
+  if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(mail)) {
+    return true;
+  }
+  return false;
+}
+
+export function ValidatePhoneNumber(inputtxt) {
+  var phoneno = /^\+?([0-9]{2})\)?[-. ]?([0-9]{4})[-. ]?([0-9]{4})$/;
+  if (inputtxt.toString().match(phoneno)) {
+    return true;
+  } else {
+    return false;
+  }
+}
+
 /**
  * Se suscribe la función SaveSession al store para que se ejecute cada que el store
  * es modificado.
@@ -65,20 +81,21 @@ const LoadCatalog = async () => {
 
 export const LocalStorage = {
   InitializeSuloza: async () => {
-    AsyncStorage.clear();
+    //AsyncStorage.clear();
     //Load Catalog from API
+
+    console.log(await AsyncStorage.getItem("userInformation"));
     await LoadCatalog();
 
     //Login in Facebook
-    let userInformationexists =
-      (await AsyncStorage.getItem("userInformation")) | false;
+    let userInformationexists = await AsyncStorage.getItem("userInformation");
 
     if (!userInformationexists) {
       //await FacebookLogIn();
       store.dispatch(setUserInformation({}));
     } else {
       console.log("Se carga informacion del usuario desde el device");
-      store.dispatch(setUserInformation(userInformationexists));
+      store.dispatch(setUserInformation(JSON.parse(userInformationexists)));
     }
 
     return true;

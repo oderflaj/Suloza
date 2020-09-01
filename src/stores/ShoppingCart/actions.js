@@ -6,6 +6,8 @@ export const TRUNONOFF_SHOPPINGCART = "TRUNONOFF_SHOPPINGCART";
 export const CLEAR_CART = "CLEAR_CART";
 export const SET_STATUS_CART = "SET_STATUS_CART";
 export const SET_USER_INFORMATION = "SET_USER_INFORMATION";
+export const SET_ORDER = "SET_ORDER";
+export const UNSET_USER_INFORMATION = "UNSET_USER_INFORMATION";
 
 export const setGuess = (guesses) => {
   //console.log(guesses)
@@ -56,5 +58,16 @@ export const setUserInformation = (userInformation) => {
   return {
     type: SET_USER_INFORMATION,
     userInformation,
+  };
+};
+
+export const setOrder = (order) => {
+  type: SET_ORDER, order;
+};
+
+export const unsetUserInformation = () => {
+  return {
+    type: SET_USER_INFORMATION,
+    userInformation: {},
   };
 };

@@ -13,6 +13,7 @@ export const styles = StyleSheet.create({
     paddingVertical: 10,
     paddingHorizontal: 15,
     backgroundColor: globalStyle.globalFontColor, //"rgb(48, 119, 119)",
+    borderWidth: 0,
   },
 
   textButton: {

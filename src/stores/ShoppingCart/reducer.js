@@ -9,11 +9,12 @@ const initialState = {
   turnOnOffShoppingCart: false,
   statusShoppingCart: "open", //open,pending,closed
   userInformation: {},
+  order: {},
 };
 
 //Carculo del monto del carrito de compra
 const calcAmount = (currentCart) => {
-  console.log(currentCart);
+  //console.log(currentCart);
   if (typeof currentCart == "undefined" || currentCart.length == 0) {
     return 0;
   }
@@ -78,6 +79,9 @@ export default function shoppingCart(state = initialState, action) {
 
     case Actions.SET_USER_INFORMATION:
       return { ...state, userInformation: action.userInformation };
+
+    case Actions.SET_ORDER:
+      return { ...state, order: action.order };
 
     default:
       return state;

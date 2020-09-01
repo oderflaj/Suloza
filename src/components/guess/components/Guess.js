@@ -16,8 +16,6 @@ export default ({ guesses, turnOnOff, actions }) => {
   });
 
   const setFormat = (textValue) => {
-    console.log(textValue);
-
     if (textValue < 0) {
       textValue = 0;
     }
