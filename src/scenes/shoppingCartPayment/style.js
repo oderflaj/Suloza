@@ -24,8 +24,6 @@ export const styles = new StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-around",
     paddingTop: 30,
-    position: "relative",
-    marginBottom: -40,
   },
   amountTitle: {
     fontFamily: "Spartan-Bold",
@@ -44,5 +42,25 @@ export const styles = new StyleSheet.create({
     height: "100%",
     justifyContent: "center",
     backgroundColor: "rgba(96, 105, 127, 0.50)",
+  },
+
+  formAddressContent: {
+    width: "90%",
+    alignSelf: "center",
+    paddingTop: 20,
+  },
+  formAddressText: {
+    fontFamily: "Spartan-Medium",
+    color: globalStyle.globalFontColor,
+    fontSize: 15,
+  },
+  formAddressTextInput: {
+    borderWidth: 1,
+    marginBottom: 10,
+    borderRadius: 5,
+    height: 40,
+    color: globalStyle.globalFontColor,
+    borderColor: globalStyle.globalFontColor,
+    paddingLeft: 10,
   },
 });

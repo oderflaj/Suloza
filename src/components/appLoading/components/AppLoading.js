@@ -1,9 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { View, Image } from "react-native";
 import { stylesAppLoading } from "../styles";
-import { FontAwesome5 } from "@expo/vector-icons";
-import { FontAwesome } from "@expo/vector-icons";
-import { Feather } from "@expo/vector-icons";
+import { FontAwesome5, FontAwesome, Feather } from "@expo/vector-icons";
 
 import { globalStyle } from "../../../styles";
 

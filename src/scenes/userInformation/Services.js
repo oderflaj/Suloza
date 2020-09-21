@@ -83,7 +83,8 @@ export const Register = async (userInformation) => {
 
         if (
           result.statusResponse == "Ok" ||
-          result.statusResponse == "Reactivated"
+          result.statusResponse == "Reactivated" ||
+          result.statusResponse == "Created"
         ) {
           userInformation["id"] = result.data[0].id;
           await AsyncStorage.setItem(

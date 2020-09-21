@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   View,
   Text,
@@ -7,6 +7,7 @@ import {
   ActivityIndicator,
   AsyncStorage,
   Alert,
+  TextInput,
 } from "react-native";
 import Openpay, { createDeviceSessionId } from "openpay-react-native";
 import { styles } from "../style";
@@ -19,45 +20,105 @@ export default ({ closeShoppingCartPayment, totalAmount, cart }) => {
   const [token, setToken] = React.useState("");
   const [deviceSessionId, setDeviceSessionId] = React.useState("");
   const [activityPayment, setActivityPayment] = React.useState(false);
+  const [formStreetNumberValue, setFormStreetNumberValue] = useState("");
+  const [neighborhood, setNeighborhood] = useState("");
+  const [zip, setZip] = useState("");
+  const [city, setCity] = useState("");
+  const [estate, setEstate] = useState("");
 
   const successToken = async (response) => {
     console.log(response);
     const deviceSessionId = createDeviceSessionId();
     const token = response.id;
 
-    console.log(`DeviceId: ${deviceSessionId}`);
-    console.log(`Token: ${token}`);
     setToken(`Token: ${token}`);
     setDeviceSessionId(`DeviceSessionId: ${deviceSessionId}`);
-    console.log("Apaga loading....");
+
     setLoading(false);
     try {
-      setActivityPayment(true);
       let userInfo = JSON.parse(await AsyncStorage.getItem("userInformation"));
       console.log(userInfo);
+
+      if (formStreetNumberValue.length < 3) {
+        throw "Revise la calle y número de la dirección de entrega.";
+      }
+
+      if (neighborhood.length < 3) {
+        throw "Revise la colonia que ingreso.";
+      }
+
+      if (zip.length < 5) {
+        throw "Revise el código postal que ingreso.";
+      }
+
+      if (city.length < 4) {
+        throw "Revise el campo de ciudad que se ingreso.";
+      }
+
+      if (estate.length < 5) {
+        throw "Revise el estado que ingreso.";
+      }
+
+      let address = `${formStreetNumberValue} Col. ${neighborhood.trim()}, C.P. ${zip} ${city}, ${estate}`;
+
+      let descripcion = `Total de productos solicitados ${cart.length}:`;
+
+      cart.forEach((product) => {
+        descripcion += `\nProducto ${product.name}, Piezas ${
+          product.units
+        }, Precio unitario ${product.price}, Subtotal $${Number(
+          product.units * product.price
+        )
+          .toFixed(2)
+          .replace(/\d(?=(\d{3})+\.)/g, "$&,")}`;
+      });
+
       let bill = {
         name: userInfo.name,
         token: token,
         amount: totalAmount,
-        description: `Total de productos solicitados ${cart.lenght}`,
+        description: descripcion,
         deviceSessionId,
         phoneNumber: userInfo.phoneNumber,
         email: userInfo.email,
         cart,
+        address: address,
       };
 
-      let payment = await CartPayment(bill);
+      let payment = {};
 
-      if (typeof payment.Error != "undefined") {
-        throw payment.Error;
-      }
+      await Alert.alert(
+        "Confirmación de Envío.",
+        `Dirección de Envío:\n${address}`,
+        [
+          {
+            text: "Cancelar",
+            onPress: () => console.log("Cancel Pressed"),
+            style: "cancel",
+          },
+          {
+            text: "OK",
+            onPress: async () => {
+              setActivityPayment(true);
+              console.log("Va a lanzar Pago");
+              payment = await CartPayment(bill);
+              setActivityPayment(false);
+              if (typeof payment.Error != "undefined") {
+                throw payment.Error;
+              }
 
-      console.log("Payment..........");
-      console.log(payment);
+              if (payment.statusResponse == "Charge Completed") {
+                
+              }
+            },
+          },
+        ],
+        { cancelable: false }
+      );
     } catch (error) {
       console.log(error);
       Alert.alert(
-        "Error al realiar el pago!",
+        "Error al realizar el pago!",
         error,
         [
           {
@@ -68,7 +129,7 @@ export default ({ closeShoppingCartPayment, totalAmount, cart }) => {
         { cancelable: false }
       );
     }
-    setActivityPayment(false);
+
     //closeShoppingCartPayment(true);
 
     // Make the call to your server with your charge request
@@ -108,6 +169,55 @@ export default ({ closeShoppingCartPayment, totalAmount, cart }) => {
           </View>
         )}
         <ScrollView style={styles.subcontainer}>
+          <View style={styles.formAddressContent}>
+            <Text style={styles.amountTitle}>Dirección de Envío:</Text>
+            <Text style={styles.formAddressText}>Calle y Número</Text>
+            <TextInput
+              style={styles.formAddressTextInput}
+              value={formStreetNumberValue}
+              onChangeText={(text) => {
+                setFormStreetNumberValue(text);
+              }}
+            />
+            <Text style={styles.formAddressText}>Colonia</Text>
+            <TextInput
+              style={styles.formAddressTextInput}
+              value={neighborhood}
+              autoCompleteType={"street-address"}
+              onChangeText={(text) => {
+                setNeighborhood(text);
+              }}
+            />
+            <Text style={styles.formAddressText}>Código Postal</Text>
+            <TextInput
+              style={styles.formAddressTextInput}
+              value={zip}
+              autoCompleteType={"postal-code"}
+              keyboardType={"number-pad"}
+              onChangeText={(text) => {
+                setZip(text);
+              }}
+            />
+            <Text style={styles.formAddressText}>Ciudad</Text>
+            <TextInput
+              style={styles.formAddressTextInput}
+              value={city}
+              autoCompleteType={"street-address"}
+              onChangeText={(text) => {
+                setCity(text);
+              }}
+            />
+
+            <Text style={styles.formAddressText}>Estado</Text>
+            <TextInput
+              style={styles.formAddressTextInput}
+              value={estate}
+              onChangeText={(text) => {
+                setEstate(text);
+              }}
+            />
+          </View>
+
           <View style={styles.amountContainer}>
             <Text style={styles.amountTitle}>Monto Total:</Text>
             <Text style={styles.amountValue}>{`$${totalAmount}`}</Text>

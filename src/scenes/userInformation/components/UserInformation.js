@@ -53,9 +53,13 @@ export default ({ closeUserInformation }) => {
 
       let result = await Register(userInformation);
 
+      console.log("Regresa de registrar al nuevo usuario-------------");
+      console.log(result);
+
       if (
         result.statusResponse != "Ok" &&
-        result.statusResponse != "Reactivated"
+        result.statusResponse != "Reactivated" &&
+        result.statusResponse != "Created"
       ) {
         throw result.message;
       }
